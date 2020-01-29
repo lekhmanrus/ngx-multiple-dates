@@ -2,7 +2,7 @@
 
 Multiple dates picker based on [Angular Material](https://material.angular.io).
 
-_Image_
+[Example](https://raw.githubusercontent.com/lekhmanrus/ngx-multiple-dates/master/assets/animation.gif)
 
 
 
