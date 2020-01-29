@@ -115,15 +115,15 @@ Exported as: `ngxMultipleDates`
 | Name                | Description                                                              |
 |---------------------|--------------------------------------------------------------------------|
 | **Input**           |                                                                          |
-| `@Input()`<br />`value: D | null` | The value of the `ngx-multiple-dates` control.             |
+| `@Input()`<br />`value: D \| null` | The value of the `ngx-multiple-dates` control.             |
 | `@Input()`<br />`matDatepicker: MatDatepicker<D>` | The datepicker that this `ngx-multiple-dates` element is associated with. |
 | `@Input()`<br />`color: ThemePalette` | Theme color palette for the component.                        |
 | `@Input()`<br />`placeholder: string` | Placeholder to be shown if no value has been selected.        |
 | `@Input()`<br />`required: boolean` | Whether the component is required.                              |
 | `@Input()`<br />`disabled: boolean` | Whether the component is disabled.                              |
 | `@Input()`<br />`matDatepickerFilter: (date: D) => boolean` | Function that can be used to filter out dates within the datepicker. |
-| `@Input()`<br />`max: D | null` | The maximum valid date.                                             |
-| `@Input()`<br />`min: D | null` | The minimum valid date.                                             |
+| `@Input()`<br />`max: D \| null` | The maximum valid date.                                             |
+| `@Input()`<br />`min: D \| null` | The minimum valid date.                                             |
 | `@Input()`<br />`id: string` | Unique id of the element.                                              |
 | `@Input()`<br />`errorStateMatcher`: ErrorStateMatcher | An object used to control when error messages are shown. Color palette to use on the datepicker's calendar. |
 | **Output**          |                                                                          |
@@ -160,7 +160,7 @@ Exported as: `ngxMultipleDates`
 |----------------------------|----------------------------------------------------------------------|
 | `control: AbstractControl` | The control to validate against.                                     |
 | **Returns**                                                                                       |
-| `ValidationErrors | null`  | A map of validation errors if validation fails, otherwise null.      |
+| `ValidationErrors \| null`  | A map of validation errors if validation fails, otherwise null.      |
 
 * `dateClass` <br /> Function used to add CSS classes to selected dates.
 
