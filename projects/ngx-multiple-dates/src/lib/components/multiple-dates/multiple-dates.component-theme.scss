@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+
+@mixin ngx-multiple-dates-component-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  .mat-calendar-body-cell.selected {
+    &,
+    &:hover {
+      .mat-calendar-body-cell-content {
+        &,
+        &:hover {
+          background-color: mat-color($primary) !important;
+          color: mat-color($primary, default-contrast) !important;
+        }
+      }
+    }
+  }
+}

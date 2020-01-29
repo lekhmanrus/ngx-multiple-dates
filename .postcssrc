@@ -1,0 +1,8 @@
+{
+  "map": false,
+  "plugins": {
+    "autoprefixer": {
+      "cascade": false
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<div class="theme-container">
+  <button *ngFor="let item of items" mat-button class="item" [ngClass]="item.className"
+          [class.current]="theme === item.className" [class.hover]="hovering"
+          [attr.cdkFocusInitial]="theme === item.className || null"
+          (click)="theme = item.className" (focus)="hovering = item.className"
+          (mouseenter)="hovering = item.className" (mouseleave)="hovering = null">
+    <mat-icon *ngIf="theme === item.className">check_circle</mat-icon>
+  </button>
+</div>

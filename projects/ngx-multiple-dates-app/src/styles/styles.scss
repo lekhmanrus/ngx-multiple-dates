@@ -1,0 +1,39 @@
+@import '~@angular/material/theming';
+@import 'ngx-multiple-dates/theming';
+
+html,
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  height: 100%;
+  margin: 0;
+}
+
+@include mat-core();
+
+.indigo-pink-theme {
+  $primary: mat-palette($mat-indigo);
+  $accent:  mat-palette($mat-pink);
+  $theme: mat-light-theme($primary, $accent);
+  @include angular-material-theme($theme);
+  @include ngx-multiple-dates-theme($theme);
+}
+
+.deeppurple-amber-theme {
+  $primary: mat-palette($mat-deep-purple);
+  $accent:  mat-palette($mat-amber);
+  $theme: mat-light-theme($primary, $accent);
+  @include angular-material-theme($theme);
+  @include ngx-multiple-dates-theme($theme);
+}
+
+.purple-green-theme {
+  $primary: mat-palette($mat-purple);
+  $accent:  mat-palette($mat-green);
+  $theme: mat-light-theme($primary, $accent);
+  @include angular-material-theme($theme);
+  @include ngx-multiple-dates-theme($theme);
+}
+
+.fill {
+  flex: 1 1 auto;
+}

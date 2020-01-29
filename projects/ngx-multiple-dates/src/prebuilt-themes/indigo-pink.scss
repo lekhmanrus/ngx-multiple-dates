@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+@import '../lib/theming';
+
+$primary: mat-palette($mat-indigo);
+$accent:  mat-palette($mat-pink);
+$theme: mat-light-theme($primary, $accent);
+@include ngx-multiple-dates-theme($theme);

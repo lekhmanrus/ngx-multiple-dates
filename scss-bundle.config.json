@@ -1,0 +1,9 @@
+{
+  "bundlerOptions": {
+    "entryFile": "./projects/ngx-multiple-dates/src/lib/_theming.scss",
+    "rootDir": "./",
+    "outFile": "./dist/ngx-multiple-dates/_theming.scss",
+    "ignoreImports": ["~@angular/.*"],
+    "logLevel": "silent"
+  }
+}
