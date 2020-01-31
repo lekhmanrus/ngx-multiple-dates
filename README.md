@@ -2,6 +2,8 @@
 
 Multiple dates picker based on [Angular Material](https://material.angular.io).
 
+Compatible with Angular / CDK / Material **9.x.x**.
+
 ![Example](https://raw.githubusercontent.com/lekhmanrus/ngx-multiple-dates/master/assets/animation.gif)
 
 
