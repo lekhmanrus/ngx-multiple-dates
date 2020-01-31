@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, HostBinding } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 import { DEFAULT_THEME } from '../../app.constants';
@@ -27,6 +27,10 @@ export class RootComponent {
   public min = new Date(+(new Date()) - 30 * 24 * 60 * 60 * 1000);
   public max = new Date(+(new Date()) + 30 * 24 * 60 * 60 * 1000);
   public reactiveControl = new FormControl();
+  public dynamicName = 'reactiveFormControl';
+  public reactiveForm = new FormGroup({
+    [this.dynamicName]: new FormControl(this.modelPredefined)
+  });
   @HostBinding('class') private _themeClass: string = DEFAULT_THEME;
 
   public get themeClass(): string {
@@ -42,5 +46,7 @@ export class RootComponent {
 
   constructor(private _overlayContainer: OverlayContainer) {
     this._overlayContainer.getContainerElement().classList.add(this.themeClass);
+    this.reactiveControl.valueChanges.subscribe((values) => console.log('reactiveControl', values));
+    this.reactiveForm.valueChanges.subscribe((values) => console.log('reactiveForm', values));
   }
 }

@@ -1,4 +1,4 @@
-@import './components/multiple-dates/multiple-dates.component-theme.scss';
+@import './components/multiple-dates/multiple-dates.component-theme';
 
 @mixin ngx-multiple-dates-theme($theme) {
   @include ngx-multiple-dates-component-theme($theme);

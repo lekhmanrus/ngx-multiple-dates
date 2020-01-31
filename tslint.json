@@ -4,7 +4,10 @@
     "codelyzer"
   ],
   "rules": {
-    "array-type": false,
+    "array-type": [
+      true,
+      "array-simple"
+    ],
     "arrow-parens": false,
     "deprecation": {
       "severity": "warning"

@@ -1,6 +1,5 @@
 import {
   Component,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   AfterViewInit,
   OnDestroy,
@@ -66,8 +65,7 @@ const _MultipleDatesBaseMixinBase: HasTabIndexCtor & CanDisableCtor & CanUpdateE
   providers: [
     { provide: MatFormFieldControl, useExisting: MultipleDatesComponent }
   ],
-  exportAs: 'ngxMultipleDates',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  exportAs: 'ngxMultipleDates'
 })
 export class MultipleDatesComponent<D = Date>
   extends _MultipleDatesBaseMixinBase
@@ -91,7 +89,7 @@ export class MultipleDatesComponent<D = Date>
   @Input()
   @HostBinding('attr.tabindex')
   public tabIndex: number;
-  @Output() public dateChange = new EventEmitter<MatDatepickerInputEvent<D>>();
+  @Output() public readonly dateChange = new EventEmitter<MatDatepickerInputEvent<D>>();
   public focused = false;
   public controlType ?: string | undefined = 'ngx-multiple-dates';
   public resetModel = new Date(0);
@@ -331,9 +329,11 @@ export class MultipleDatesComponent<D = Date>
   }
 
   public writeValue(value: D[] | null): void {
-    this._value = value;
-    if (value) {
+    if (Array.isArray(value)) {
+      this._value = [ ...value ];
       this._sort();
+    } else {
+      this._value = value;
     }
     this._onChange(value);
     this.stateChanges.next();

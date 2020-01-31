@@ -180,4 +180,23 @@
       </mat-card-content>
     </mat-card>
   </form>
+
+  <form [formGroup]="reactiveForm">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Reactive Form</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <ngx-multiple-dates [matDatepicker]="pickerReactiveForm" placeholder="Reactive"
+                              [formControlName]="dynamicName"
+                              #reactiveFormForValuesOutput="ngxMultipleDates">
+          </ngx-multiple-dates>
+          <mat-datepicker-toggle matPrefix [for]="pickerReactiveForm"></mat-datepicker-toggle>
+          <mat-datepicker #pickerReactiveForm></mat-datepicker>
+        </mat-form-field>
+        <pre>{{ reactiveFormForValuesOutput.value | json }}</pre>
+      </mat-card-content>
+    </mat-card>
+  </form>
 </div>
