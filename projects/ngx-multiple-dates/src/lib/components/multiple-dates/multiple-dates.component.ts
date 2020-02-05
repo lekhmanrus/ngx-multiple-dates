@@ -405,6 +405,7 @@ export class MultipleDatesComponent<D = Date>
 
   public remove(date: D): void {
     if (this.value && this.value.length) {
+      this._onTouched();
       const index = this._find(date);
       this.value.splice(index, 1);
       this.writeValue(this.value);
