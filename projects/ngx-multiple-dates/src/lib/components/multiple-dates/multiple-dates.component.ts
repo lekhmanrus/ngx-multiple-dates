@@ -105,6 +105,7 @@ export class MultipleDatesComponent<D = Date>
   private _dateFilter: (date: D | null) => boolean;
   private _min: D | null;
   private _max: D | null;
+  private _validator: ValidatorFn | null;
   private _onChange: (_: any) => void = () => { };
   private _onTouched: () => void =  () => { };
   private _onValidatorChange: () => void =  () => { };
@@ -126,12 +127,6 @@ export class MultipleDatesComponent<D = Date>
       ? null
       : { matDatepickerMax: { max: this.max, actual: value } };
   }
-  // tslint:disable-next-line:member-ordering
-  private _validator: ValidatorFn | null = Validators.compose([
-    this._filterValidator,
-    this._minValidator,
-    this._maxValidator
-  ]);
 
   @Input()
   public get matDatepicker(): MatDatepicker<D> {
@@ -271,9 +266,18 @@ export class MultipleDatesComponent<D = Date>
     @Attribute('tabindex') tabIndex: string
   ) {
     super($elementRef, defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl);
+    const validators = [
+      this._filterValidator,
+      this._minValidator,
+      this._maxValidator
+    ];
     if (this.ngControl != null) {
       this.ngControl.valueAccessor = this;
+      if (this.ngControl.validator) {
+        validators.push(this.ngControl.validator);
+      }
     }
+    this._validator = Validators.compose(validators);
     _focusMonitor.monitor($elementRef.nativeElement, true)
       .subscribe((origin: any) => {
         this.focused = !!origin;
