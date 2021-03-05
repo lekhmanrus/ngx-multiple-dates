@@ -1,7 +1,7 @@
 {
   "name": "ngx-multiple-dates",
   "description": "Angular Multiple Dates",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "https://lekhmanrus.github.io/ngx-multiple-dates/",
   "bugs": {
     "url": "https://github.com/lekhmanrus/ngx-multiple-dates/issues",
@@ -39,7 +39,8 @@
     "css:prefix": "postcss --replace \"./dist/ngx-multiple-dates/prebuilt-themes/*.css\"",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "release": "standard-version"
   },
   "private": false,
   "keywords": [
@@ -93,6 +94,7 @@
     "postcss-load-config": "3.0.1",
     "protractor": "7.0.0",
     "scss-bundle": "3.1.2",
+    "standard-version": "9.1.1",
     "ts-node": "9.1.1",
     "tslint": "6.0.0",
     "typescript": "4.1.5"
