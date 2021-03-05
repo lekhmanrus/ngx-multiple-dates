@@ -13,7 +13,6 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MdePopoverModule } from '@material-extended/mde';
-
 import { NgxMultipleDatesModule } from 'ngx-multiple-dates';
 
 import { RootComponent } from './components/root/root.component';
@@ -41,7 +40,6 @@ import { ThemePickerComponent } from './components/theme-picker/theme-picker.com
     MatInputModule,
     MatToolbarModule,
     MdePopoverModule,
-
     NgxMultipleDatesModule
   ],
   providers: [ ],

@@ -26,7 +26,7 @@ import {
   Validators
 } from '@angular/forms';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { BooleanInput, coerceArray, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   DateAdapter,
   ThemePalette,
@@ -41,10 +41,16 @@ import {
   mixinDisabled,
   mixinErrorState
 } from '@angular/material/core';
-import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import {
+  MatDatepicker,
+  MatDatepickerInputEvent,
+  MatCalendarCellClassFunction
+} from '@angular/material/datepicker';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
+import { DateClass } from '../../models/date-class.model';
 
 class MultipleDatesBase {
   constructor(
@@ -58,6 +64,10 @@ class MultipleDatesBase {
 const _MultipleDatesBaseMixinBase: HasTabIndexCtor & CanDisableCtor & CanUpdateErrorStateCtor
   & typeof MultipleDatesBase = mixinTabIndex(mixinDisabled(mixinErrorState(MultipleDatesBase)));
 
+/**
+ * Multiple dates component.
+ * @template D Date type.
+ */
 @Component({
   selector: 'ngx-multiple-dates',
   templateUrl: './multiple-dates.component.html',
@@ -91,7 +101,7 @@ export class MultipleDatesComponent<D = Date>
   public tabIndex: number;
   @Output() public readonly dateChange = new EventEmitter<MatDatepickerInputEvent<D>>();
   public focused = false;
-  public controlType ?: string | undefined = 'ngx-multiple-dates';
+  public controlType? = 'ngx-multiple-dates';
   public resetModel = new Date(0);
   public readonly stateChanges = new Subject<void>();
   private readonly _destroy = new Subject<void>();
@@ -105,6 +115,7 @@ export class MultipleDatesComponent<D = Date>
   private _dateFilter: (date: D | null) => boolean;
   private _min: D | null;
   private _max: D | null;
+  private _classes: Array<DateClass<D>> = [ ];
   private _validator: ValidatorFn | null;
   private _onChange: (_: any) => void = () => { };
   private _onTouched: () => void =  () => { };
@@ -245,6 +256,15 @@ export class MultipleDatesComponent<D = Date>
     this._onValidatorChange();
   }
 
+  /** Custom date classes. */
+  @Input()
+  public get classes(): Array<DateClass<D>> {
+    return this._classes;
+  }
+  public set classes(value: Array<DateClass<D>>) {
+    this._classes = coerceArray(value);
+  }
+
   @HostBinding('class.floating')
   public get shouldLabelFloat() {
     return !this.empty || (this.focused && !this.disabled);
@@ -370,8 +390,15 @@ export class MultipleDatesComponent<D = Date>
   }
 
   public dateClass = (date: D) => {
+    let className: string | undefined;
+    if (this.classes.length) {
+      className = this.getClassName(date);
+    }
     if (this._find(date) !== -1) {
-      return [ 'selected' ];
+      return [ 'selected', ...(className ? [ className ] : [ ]) ];
+    }
+    if (className) {
+      return [ className ];
     }
     return [ ];
   }
@@ -417,6 +444,15 @@ export class MultipleDatesComponent<D = Date>
     return item;
   }
 
+  public getClassName(value: D): string | undefined {
+    for (const classValue of this.classes) {
+      if (this._dateAdapter.compareDate(classValue.value, value) === 0) {
+        return classValue.className;
+      }
+    }
+    return undefined;
+  }
+
   private _setStartAt(): void {
     if (this.matDatepicker) {
       if (this.value && this.value.length) {
@@ -435,11 +471,11 @@ export class MultipleDatesComponent<D = Date>
 
   private _setDateClass(): void {
     if (this.matDatepicker) {
-      const dateClassFn = this.matDatepicker.dateClass;
+      const dateClassFn: MatCalendarCellClassFunction<D> = this.matDatepicker.dateClass;
       this.matDatepicker.dateClass = (date: D) => {
         const classList = this.dateClass(date);
         if (dateClassFn) {
-          const oldClasses = dateClassFn(date);
+          const oldClasses = dateClassFn(date, 'month');
           if (classList.length) {
             if (oldClasses instanceof Set) {
               for (const className of classList) {

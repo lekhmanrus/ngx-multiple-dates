@@ -5,10 +5,14 @@
 
   .mat-calendar-body-cell.selected {
     &,
-    &:hover {
+    &:hover,
+    &:not(.mat-calendar-body-disabled),
+    &:not(.mat-calendar-body-disabled):hover {
       .mat-calendar-body-cell-content {
         &,
-        &:hover {
+        &:hover,
+        &:not(.disabled),
+        &:not(.disabled):hover {
           background-color: mat-color($primary) !important;
           color: mat-color($primary, default-contrast) !important;
         }

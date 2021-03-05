@@ -25,13 +25,15 @@
     "multiple",
     "datepicker"
   ],
+  "dependencies": {
+    "tslib": ">=1.10.0"
+  },
   "peerDependencies": {
-    "@angular/cdk": "~9.0.0-rc.8",
-    "@angular/common": "~9.0.0-rc.11",
-    "@angular/core": "~9.0.0-rc.11",
-    "@angular/forms": "~9.0.0-rc.11",
-    "@angular/material": "~9.0.0-rc.8",
-    "rxjs": "~6.5.4",
-    "tslib": "~1.10.0"
+    "@angular/cdk": ">=9.0.0",
+    "@angular/common": ">=9.0.0",
+    "@angular/core": ">=9.0.0",
+    "@angular/forms": ">=9.0.0",
+    "@angular/material": ">=9.0.0",
+    "rxjs": ">=6.5.4"
   }
 }

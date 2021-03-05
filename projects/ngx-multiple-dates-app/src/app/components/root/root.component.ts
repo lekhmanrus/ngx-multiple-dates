@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, HostBinding } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { DateClass } from 'ngx-multiple-dates';
 
 import { DEFAULT_THEME } from '../../app.constants';
 
@@ -24,15 +25,22 @@ export class RootComponent {
   public modelMinlengthMaxlength: Date[];
   public modelRequired: Date[];
   public modelColor: Date[];
+  public modelClasses: Date[] = [ new Date('3/7/2021'), new Date('3/11/2021') ];
   public min = new Date(+(new Date()) - 30 * 24 * 60 * 60 * 1000);
   public max = new Date(+(new Date()) + 30 * 24 * 60 * 60 * 1000);
+  public classes: DateClass[] = [
+    { value: new Date('3/5/2021'), className: 'my-red' },
+    { value: new Date('3/7/2021'), className: 'my-green' },
+    { value: new Date('3/9/2021'), className: 'my-blue' }
+  ];
   public reactiveControl = new FormControl();
   public dynamicName = 'reactiveFormControl';
   public reactiveForm = new FormGroup({
     [this.dynamicName]: new FormControl(this.modelPredefined)
   });
-  @HostBinding('class') private _themeClass: string = DEFAULT_THEME;
+  private _themeClass: string = DEFAULT_THEME;
 
+  @HostBinding('class')
   public get themeClass(): string {
     return this._themeClass;
   }

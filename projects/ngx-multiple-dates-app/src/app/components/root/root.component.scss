@@ -25,3 +25,74 @@
     width: 100%;
   }
 }
+
+::ng-deep {
+  /* Datepicker classes. */
+  .mat-calendar-body-cell {
+    &.my-red {
+      .mat-calendar-body-cell-content,
+      &:hover .mat-calendar-body-cell-content {
+        border: 1px solid #f44336 !important;
+      }
+    }
+
+    &.my-green {
+      .mat-calendar-body-cell-content,
+      &:hover .mat-calendar-body-cell-content {
+        border: 1px solid #4caf50 !important;
+      }
+    }
+
+    &.my-blue {
+      .mat-calendar-body-cell-content,
+      &:hover .mat-calendar-body-cell-content {
+        border: 1px solid #2196f3 !important;
+      }
+    }
+
+    /* Datepicker selected classes. */
+    &.selected:not(.mat-calendar-body-disabled) {
+      &.my-red {
+        .mat-calendar-body-cell-content:not(.disabled),
+        &:hover .mat-calendar-body-cell-content:not(.disabled),
+        &:hover .mat-calendar-body-cell-content:not(.disabled):hover {
+          background-color: #f44336 !important;
+        }
+      }
+
+      &.my-green {
+        .mat-calendar-body-cell-content:not(.disabled),
+        &:hover .mat-calendar-body-cell-content:not(.disabled),
+        &:hover .mat-calendar-body-cell-content:not(.disabled):hover {
+          background-color: #4caf50 !important;
+        }
+      }
+
+      &.my-blue {
+        .mat-calendar-body-cell-content:not(.disabled),
+        &:hover .mat-calendar-body-cell-content:not(.disabled),
+        &:hover .mat-calendar-body-cell-content:not(.disabled):hover {
+          background-color: #2196f3 !important;
+        }
+      }
+    }
+  }
+
+  /* Chip classes. */
+  .mat-chip {
+    &.my-red {
+      background-color: #f44336 !important;
+      color: #fff !important;
+    }
+
+    &.my-green {
+      background-color: #4caf50 !important;
+      color: #fff !important;
+    }
+
+    &.my-blue {
+      background-color: #2196f3 !important;
+      color: #fff !important;
+    }
+  }
+}

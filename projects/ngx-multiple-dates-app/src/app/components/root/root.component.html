@@ -166,6 +166,97 @@
 
     <mat-card>
       <mat-card-header>
+        <mat-card-title>Classes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <ngx-multiple-dates [matDatepicker]="pickerClasses" placeholder="Classes"
+                              [classes]="classes" name="modelClasses" [(ngModel)]="modelClasses">
+          </ngx-multiple-dates>
+          <mat-datepicker-toggle matPrefix [for]="pickerClasses"></mat-datepicker-toggle>
+          <mat-datepicker #pickerClasses></mat-datepicker>
+        </mat-form-field>
+        <div><strong>Classes:</strong></div>
+        <pre>{{ classes | json }}</pre>
+        <div><strong>SCSS:</strong></div>
+        <pre>
+::ng-deep &#123;
+  /* Datepicker classes. */
+  .mat-calendar-body-cell &#123;
+    &amp;.my-red &#123;
+      .mat-calendar-body-cell-content,
+      &amp;:hover .mat-calendar-body-cell-content &#123;
+        border: 1px solid #f44336 !important;
+      &#125;
+    &#125;
+
+    &amp;.my-green &#123;
+      .mat-calendar-body-cell-content,
+      &amp;:hover .mat-calendar-body-cell-content &#123;
+        border: 1px solid #4caf50 !important;
+      &#125;
+    &#125;
+
+    &amp;.my-blue &#123;
+      .mat-calendar-body-cell-content,
+      &amp;:hover .mat-calendar-body-cell-content &#123;
+        border: 1px solid #2196f3 !important;
+      &#125;
+    &#125;
+
+    /* Datepicker selected classes. */
+    &amp;.selected:not(.mat-calendar-body-disabled) &#123;
+      &amp;.my-red &#123;
+        .mat-calendar-body-cell-content:not(.disabled),
+        &amp;:hover .mat-calendar-body-cell-content:not(.disabled),
+        &amp;:hover .mat-calendar-body-cell-content:not(.disabled):hover &#123;
+          background-color: #f44336 !important;
+        &#125;
+      &#125;
+
+      &amp;.my-green &#123;
+        .mat-calendar-body-cell-content:not(.disabled),
+        &amp;:hover .mat-calendar-body-cell-content:not(.disabled),
+        &amp;:hover .mat-calendar-body-cell-content:not(.disabled):hover &#123;
+          background-color: #4caf50 !important;
+        &#125;
+      &#125;
+
+      &amp;.my-blue &#123;
+        .mat-calendar-body-cell-content:not(.disabled),
+        &amp;:hover .mat-calendar-body-cell-content:not(.disabled),
+        &amp;:hover .mat-calendar-body-cell-content:not(.disabled):hover &#123;
+          background-color: #2196f3 !important;
+        &#125;
+      &#125;
+    &#125;
+  &#125;
+
+  /* Chip classes. */
+  .mat-chip &#123;
+    &amp;.my-red &#123;
+      background-color: #f44336 !important;
+      color: #fff !important;
+    &#125;
+
+    &amp;.my-green &#123;
+      background-color: #4caf50 !important;
+      color: #fff !important;
+    &#125;
+
+    &amp;.my-blue &#123;
+      background-color: #2196f3 !important;
+      color: #fff !important;
+    &#125;
+  &#125;
+&#125;
+        </pre>
+        <pre>{{ modelClasses | json }}</pre>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
         <mat-card-title>Reactive</mat-card-title>
       </mat-card-header>
       <mat-card-content>
