@@ -3,14 +3,18 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist",
+    "forceConsistentCasingInFileNames": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "module": "esnext",
-    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "moduleResolution": "node",
     "importHelpers": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -20,17 +24,19 @@
       "node_modules/@types"
     ],
     "lib": [
-      "es2018",
+      "esnext",
       "dom"
     ],
     "paths": {
       "ngx-multiple-dates": [
+        "dist/ngx-multiple-dates/ngx-multiple-dates",
         "dist/ngx-multiple-dates"
       ]
     }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true
   }
 }

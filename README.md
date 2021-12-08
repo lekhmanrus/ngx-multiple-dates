@@ -83,8 +83,8 @@ Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#version
 
             @include mat.core;
             // Palette
-            $primary: mat.define-palette($indigo-palette);
-            $accent:  mat.define-palette($pink-palette);
+            $primary: mat.define-palette(mat.$indigo-palette);
+            $accent:  mat.define-palette(mat.$pink-palette);
 
             $theme: mat.define-light-theme($primary, $accent); // theme
             @include mat.all-component-themes($theme); // apply Angular Material styles
@@ -163,8 +163,9 @@ Exported as: `ngxMultipleDates`
 | `@Input()`<br />`matDatepickerFilter: (date: D) => boolean` | Function that can be used to filter out dates within the datepicker. |
 | `@Input()`<br />`max: D \| null` | The maximum valid date.                                             |
 | `@Input()`<br />`min: D \| null` | The minimum valid date.                                             |
+| `@Input()`<br />`classes: Array<DateClass<D>>` | Custom date classes.                                                |
 | `@Input()`<br />`id: string` | Unique id of the element.                                              |
-| `@Input()`<br />`errorStateMatcher`: ErrorStateMatcher | An object used to control when error messages are shown. Color palette to use on the datepicker's calendar. |
+| `@Input()`<br />`errorStateMatcher`: ErrorStateMatcher | An object used to control when error messages are shown. |
 | **Output**          |                                                                          |
 | `@Output()`<br />`dateChange: EventEmitter<MatDatepickerInputEvent<D>>` | Emits when a change event is fired on this `ngx-multiple-dates` element. |
 | **Properties**      |                                                                          |
@@ -174,7 +175,7 @@ Exported as: `ngxMultipleDates`
 | `shouldLabelFloat: boolean` | Whether the `MatFormField` label should try to float.                   |
 | `focused: boolean`  | Whether `ngx-multiple-dates` element has focus.                          |
 | `errorState: boolean` | Whether the control is in an error state.                              |
-| `stateChanges: Observable<void>` | Stream that emits whenever the state of the control changes such that the parent MatFormField needs to run change detection. |
+| `stateChanges: Observable<void>` | Stream that emits whenever the state of the control changes such that the parent `MatFormField` needs to run change detection. |
 | `ngControl: NgControl` | Form control to manage component.                                     |
 | `controlType: 'ngx-multiple-dates'` | A name for this control that can be used by mat-form-field. |
 
@@ -199,7 +200,7 @@ Exported as: `ngxMultipleDates`
 |----------------------------|----------------------------------------------------------------------|
 | `control: AbstractControl` | The control to validate against.                                     |
 | **Returns**                                                                                       |
-| `ValidationErrors \| null`  | A map of validation errors if validation fails, otherwise null.      |
+| `ValidationErrors \| null`  | A map of validation errors if validation fails, otherwise `null`.    |
 
 * `dateClass` <br /> Function used to add CSS classes to selected dates.
 

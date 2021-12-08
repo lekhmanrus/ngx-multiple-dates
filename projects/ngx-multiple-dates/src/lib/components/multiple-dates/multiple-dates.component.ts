@@ -35,9 +35,6 @@ import {
   HasTabIndex,
   CanDisable,
   ErrorStateMatcher,
-  HasTabIndexCtor,
-  CanDisableCtor,
-  CanUpdateErrorStateCtor,
   mixinTabIndex,
   mixinDisabled,
   mixinErrorState
@@ -53,7 +50,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { DateClass } from '../../models/date-class.model';
 
-class MultipleDatesBase {
+abstract class MultipleDatesBaseMixinBase {
   constructor(
     protected $elementRef: ElementRef<HTMLElement>,
     public _defaultErrorStateMatcher: ErrorStateMatcher,
@@ -62,8 +59,9 @@ class MultipleDatesBase {
     public ngControl: NgControl
   ) { }
 }
-const _MultipleDatesBaseMixinBase: HasTabIndexCtor & CanDisableCtor & CanUpdateErrorStateCtor
-  & typeof MultipleDatesBase = mixinTabIndex(mixinDisabled(mixinErrorState(MultipleDatesBase)));
+
+const _MultipleDatesBaseMixinBase
+  = mixinTabIndex(mixinDisabled(mixinErrorState(MultipleDatesBaseMixinBase)));
 
 /**
  * Multiple dates component.
@@ -86,33 +84,58 @@ export class MultipleDatesComponent<D = Date>
   public static ngAcceptInputType_required: BooleanInput;
   public static ngAcceptInputType_disabled: BooleanInput;
   public static ngAcceptInputType_value: any[];
+  /** Unique id of the element. */
   @Input()
   @HostBinding()
   public id = `ngx-multiple-dates-${MultipleDatesComponent.nextId++}`;
   @HostBinding('attr.aria-describedby') public describedBy = '';
+  /** Whether the control is in an error state. */
   @HostBinding('attr.aria-invalid')
   @HostBinding('class.mat-form-field-invalid')
   public errorState = false;
+  /** An object used to control when error messages are shown. */
   @Input() public errorStateMatcher: ErrorStateMatcher;
   @Input()
   @HostBinding('attr.tabindex')
   public tabIndex: number;
+  /** Emits when a change event is fired on this `ngx-multiple-dates` element. */
   @Output() public readonly dateChange = new EventEmitter<MatDatepickerInputEvent<D>>();
+  /** Whether `ngx-multiple-dates` element has focus. */
   public focused = false;
+  /** A name for this control that can be used by mat-form-field. */
   public controlType? = 'ngx-multiple-dates';
+  /**
+   * Model used to reset datepicker selected value, so unselect just selectad date will be
+   * possible.
+   */
   public resetModel = new Date(0);
+  /**
+   * Stream that emits whenever the state of the control changes such that the parent
+   * `MatFormField` needs to run change detection.
+   */
   public readonly stateChanges = new Subject<void>();
   private readonly _destroy = new Subject<void>();
+  /** The datepicker that this `ngx-multiple-dates` element is associated with. */
   private _matDatepicker: MatDatepicker<D>;
+  /** Whether datepicker should be closed on date selected, or opened to select more dates. */
   private _closeOnSelected = false;
+  /** Placeholder to be shown if no value has been selected. */
   private _placeholder: string;
+  /** Whether the component is required. */
   private _required = false;
+  /** Whether the component is disabled. */
   private _disabled = false;
+  /** The value of the `ngx-multiple-dates` control. */
   private _value: D[] | null = [ ];
+  /** Theme color palette for the component. */
   private _color: ThemePalette | null = null;
+  /** Function that can be used to filter out dates within the datepicker. */
   private _dateFilter: (date: D | null) => boolean;
+  /** The minimum valid date. */
   private _min: D | null;
+  /** The maximum valid date. */
   private _max: D | null;
+  /** Custom date classes. */
   private _classes: Array<DateClass<D>> = [ ];
   private _validator: ValidatorFn | null;
   private _onChange: (_: any) => void = () => { };
@@ -137,6 +160,7 @@ export class MultipleDatesComponent<D = Date>
       : { matDatepickerMax: { max: this.max, actual: value } };
   };
 
+  /** The datepicker that this `ngx-multiple-dates` element is associated with. */
   @Input()
   public get matDatepicker(): MatDatepicker<D> {
     return this._matDatepicker;
@@ -160,6 +184,7 @@ export class MultipleDatesComponent<D = Date>
     this._setDateClass();
   }
 
+  /** Whether datepicker should be closed on date selected, or opened to select more dates. */
   @Input()
   public get closeOnSelected(): boolean {
     return this._closeOnSelected;
@@ -168,6 +193,7 @@ export class MultipleDatesComponent<D = Date>
     this._closeOnSelected = coerceBooleanProperty(value);
   }
 
+  /** Placeholder to be shown if no value has been selected. */
   @Input()
   @HostBinding('attr.aria-label')
   public get placeholder(): string {
@@ -178,6 +204,7 @@ export class MultipleDatesComponent<D = Date>
     this.stateChanges.next();
   }
 
+  /** Whether the component is required. */
   @Input()
   @HostBinding('attr.aria-required')
   public get required(): boolean {
@@ -188,6 +215,7 @@ export class MultipleDatesComponent<D = Date>
     this.stateChanges.next();
   }
 
+  /** Whether the component is disabled. */
   @Input()
   @HostBinding('attr.disabled')
   public get disabled(): boolean {
@@ -205,6 +233,7 @@ export class MultipleDatesComponent<D = Date>
     }
   }
 
+  /** The value of the `ngx-multiple-dates` control. */
   @Input()
   public get value(): D[] | null {
     if (!this._value) {
@@ -218,6 +247,7 @@ export class MultipleDatesComponent<D = Date>
     }
   }
 
+  /** Theme color palette for the component. */
   @Input()
   public get color(): ThemePalette | null {
     return this._color;
@@ -226,6 +256,7 @@ export class MultipleDatesComponent<D = Date>
     this._color = value;
   }
 
+  /** Function that can be used to filter out dates within the datepicker. */
   @Input()
   public get matDatepickerFilter(): (date: D | null) => boolean {
     return this._dateFilter;
@@ -235,6 +266,7 @@ export class MultipleDatesComponent<D = Date>
     this._onValidatorChange();
   }
 
+  /** The minimum valid date. */
   @Input()
   public get min(): D | null {
     return this._min;
@@ -263,15 +295,31 @@ export class MultipleDatesComponent<D = Date>
     this._classes = coerceArray(value);
   }
 
+  /** Whether the `MatFormField` label should try to float. */
   @HostBinding('class.floating')
   public get shouldLabelFloat() {
     return !this.empty || (this.focused && !this.disabled);
   }
 
+  /** Whether the select has a value. */
   public get empty(): boolean {
     return !this.value || !this.value.length;
   }
 
+  /**
+   * Creates an instance of MultipleDatesComponent.
+   * @param ngControl Form control to manage component.
+   * @param $elementRef A wrapper around a native element inside of a View.
+   * @param _changeDetectorRef Base class that provides change detection functionality.
+   * @param _focusMonitor Monitors mouse and keyboard events to determine the cause of focus events.
+   * @param _dateAdapter Adapts type `D` to be usable as a date by cdk-based components that work
+   * with dates.
+   * @param parentForm Parent form.
+   * @param parentFormGroup Parent form group.
+   * @param defaultErrorStateMatcher Provider that defines how form controls behave with regards to
+   * displaying error messages.
+   * @param tabIndex Tab index.
+   */
   constructor(
     @Optional() @Self() public ngControl: NgControl,
     protected $elementRef: ElementRef<HTMLElement>,
@@ -325,6 +373,7 @@ export class MultipleDatesComponent<D = Date>
     }
   }
 
+  /** Focuses the `ngx-multiple-dates` element. */
   @HostListener('focus')
   public focus(): void {
     if (!this.disabled) {
@@ -337,6 +386,7 @@ export class MultipleDatesComponent<D = Date>
     }
   }
 
+  /** Used to leave focus from the `ngx-multiple-dates` element. */
   @HostListener('blur')
   public blur(): void {
     this.focused = false;
@@ -373,20 +423,35 @@ export class MultipleDatesComponent<D = Date>
     this._onValidatorChange = fn;
   }
 
+  /**
+   * Sets the list of element IDs that currently describe this control.
+   * @param ids Ids to set.
+   */
   public setDescribedByIds(ids: string[]): void {
     this.describedBy = ids.join(' ');
   }
 
+  /** Handles a click on the control's container. */
   public onContainerClick(): void {
     if (!this.focused) {
       this.focus();
     }
   }
 
+  /**
+   * Performs synchronous validation for the control.
+   * @param control The control to validate against.
+   * @returns A map of validation errors if validation fails, otherwise null.
+   */
   public validate(control: AbstractControl): ValidationErrors | null {
     return this._validator ? this._validator(control) : null;
   }
 
+  /**
+   * Function used to add CSS classes to selected dates.
+   * @param date Date to check if classes should be applied.
+   * @returns CSS classes to apply.
+   */
   public dateClass = (date: D) => {
     let className: string | undefined;
     if (this.classes.length) {
@@ -401,6 +466,10 @@ export class MultipleDatesComponent<D = Date>
     return [ ];
   };
 
+  /**
+   * Fires when a change event is fired on the datepicker `<input />`.
+   * @param event Change event.
+   */
   public dateChanged(event: MatDatepickerInputEvent<D>): void {
     if (event.value) {
       const date = event.value;
@@ -427,6 +496,10 @@ export class MultipleDatesComponent<D = Date>
     this.dateChange.emit(event);
   }
 
+  /**
+   * Removes selected chip from the list.
+   * @param date Value to remove.
+   */
   public remove(date: D): void {
     if (this.value && this.value.length) {
       this._onTouched();

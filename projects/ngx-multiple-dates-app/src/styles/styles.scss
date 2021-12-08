@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 @import 'ngx-multiple-dates/theming';
 
 html,
@@ -8,29 +8,29 @@ body {
   margin: 0;
 }
 
-@include mat-core();
+@include mat.core;
 
 .indigo-pink-theme {
-  $primary: mat-palette($mat-indigo);
-  $accent:  mat-palette($mat-pink);
-  $theme: mat-light-theme($primary, $accent);
-  @include angular-material-theme($theme);
+  $primary: mat.define-palette(mat.$indigo-palette);
+  $accent:  mat.define-palette(mat.$pink-palette);
+  $theme: mat.define-light-theme($primary, $accent);
+  @include mat.all-component-themes($theme);
   @include ngx-multiple-dates-theme($theme);
 }
 
 .deeppurple-amber-theme {
-  $primary: mat-palette($mat-deep-purple);
-  $accent:  mat-palette($mat-amber);
-  $theme: mat-light-theme($primary, $accent);
-  @include angular-material-theme($theme);
+  $primary: mat.define-palette(mat.$deep-purple-palette);
+  $accent:  mat.define-palette(mat.$amber-palette);
+  $theme: mat.define-light-theme($primary, $accent);
+  @include mat.all-component-themes($theme);
   @include ngx-multiple-dates-theme($theme);
 }
 
 .purple-green-theme {
-  $primary: mat-palette($mat-purple);
-  $accent:  mat-palette($mat-green);
-  $theme: mat-light-theme($primary, $accent);
-  @include angular-material-theme($theme);
+  $primary: mat.define-palette(mat.$purple-palette);
+  $accent:  mat.define-palette(mat.$green-palette);
+  $theme: mat.define-light-theme($primary, $accent);
+  @include mat.all-component-themes($theme);
   @include ngx-multiple-dates-theme($theme);
 }
 
