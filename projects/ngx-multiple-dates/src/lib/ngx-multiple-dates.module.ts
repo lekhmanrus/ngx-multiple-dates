@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MultipleDatesComponent } from './components/multiple-dates/multiple-dates.component';
 
 @NgModule({
-  declarations: [MultipleDatesComponent],
+  declarations: [ MultipleDatesComponent ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -22,6 +22,6 @@ import { MultipleDatesComponent } from './components/multiple-dates/multiple-dat
     MatIconModule,
     MatInputModule
   ],
-  exports: [MultipleDatesComponent]
+  exports: [ MultipleDatesComponent ]
 })
 export class NgxMultipleDatesModule { }

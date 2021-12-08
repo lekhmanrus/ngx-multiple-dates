@@ -1,8 +1,14 @@
 # Angular Multiple Dates
 
+[![Build](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/build.yml/badge.svg)](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/build.yml)
+[![Publish](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/npm-publish.yml)
+[![codecov](https://codecov.io/gh/lekhmanrus/ngx-multiple-dates/branch/master/graph/badge.svg?token=N9T5Q1CXLU)](https://codecov.io/gh/lekhmanrus/ngx-multiple-dates)
+[![npm version](https://img.shields.io/npm/v/ngx-multiple-dates.svg)](https://www.npmjs.com/package/ngx-multiple-dates)
+[![npm](https://img.shields.io/npm/dm/ngx-multiple-dates.svg)](https://www.npmjs.com/package/ngx-multiple-dates)
+
 Multiple dates picker based on [Angular Material](https://material.angular.io).
 
-Compatible with Angular / CDK / Material **9.x.x**.
+Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#versioning).
 
 ![Example](https://raw.githubusercontent.com/lekhmanrus/ngx-multiple-dates/master/assets/animation.gif)
 
@@ -16,59 +22,76 @@ Compatible with Angular / CDK / Material **9.x.x**.
 
 1. Install  dependency:
 
-```sh
-npm install --save ngx-multiple-dates
-```
+    ```sh
+    npm install --save ngx-multiple-dates
+    ```
 
 2. Include `NgxMultipleDatesModule ` to your module:
 
-```ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatIconModule } from '@angular/material/icon';
-import { NgxMultipleDatesModule } from 'ngx-multiple-dates'; // module import
+    ```ts
+    import { NgModule } from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+    import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+    import { MatNativeDateModule } from '@angular/material/core';
+    import { MatDatepickerModule } from '@angular/material/datepicker';
+    import { MatIconModule } from '@angular/material/icon';
+    import { NgxMultipleDatesModule } from 'ngx-multiple-dates'; // module import
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatNativeDateModule,
-    MatDatepickerModule,
-    MatIconModule,
-    NgxMultipleDatesModule // import to Angular
-    // ...
-  ],
-  // ...
-})
-export class AppModule { }
-```
+    @NgModule({
+      imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatIconModule,
+        NgxMultipleDatesModule // import to Angular
+        // ...
+      ],
+      // ...
+    })
+    export class AppModule { }
+    ```
 
 3. Styles:
 
-* Add one of the prebuilt themes to `angular.json` or your styles file:
-```css
-@import 'ngx-multiple-dates/prebuilt-themes/indigo-pink.css';
-```
+    * Add one of the prebuilt themes to `angular.json` or your styles file:
+        ```css
+        @import 'ngx-multiple-dates/prebuilt-themes/indigo-pink.css';
+        ```
 
-* Or you can use custom SCSS theme:
-```scss
-@import '~@angular/material/theming';
-@import '~ngx-multiple-dates/theming'; // import library theme
+    * Or you can use custom SCSS theme
+        * Angular **< 12.x.x**:
+            ```scss
+            @import '~@angular/material/theming';
+            @import '~ngx-multiple-dates/theming'; // import library theme
 
-@include mat-core();
-// Palette
-$primary: mat-palette($mat-indigo);
-$accent:  mat-palette($mat-pink);
+            @include mat-core();
+            // Palette
+            $primary: mat-palette($mat-indigo);
+            $accent:  mat-palette($mat-pink);
 
-$theme: mat-light-theme($primary, $accent); // theme
-@include angular-material-theme($theme); // apply Angular Material styles
-@include ngx-multiple-dates-theme($theme); // apply Angular Multiple Dates styles
+            $theme: mat-light-theme($primary, $accent); // theme
+            @include angular-material-theme($theme); // apply Angular Material styles
+            @include ngx-multiple-dates-theme($theme); // apply Angular Multiple Dates styles
 
-// ...
-```
+            // ...
+            ```
+        * Angular **>= 12.x.x**:
+            ```scss
+            @use '@angular/material' as mat;
+            @import '~ngx-multiple-dates/theming'; // import library theme
+
+            @include mat.core;
+            // Palette
+            $primary: mat.define-palette($indigo-palette);
+            $accent:  mat.define-palette($pink-palette);
+
+            $theme: mat.define-light-theme($primary, $accent); // theme
+            @include mat.all-component-themes($theme); // apply Angular Material styles
+            @include ngx-multiple-dates-theme($theme); // apply Angular Multiple Dates styles
+
+            // ...
+            ```
 
 
 
@@ -78,6 +101,20 @@ $theme: mat-light-theme($primary, $accent); // theme
 * `indigo-pink.css`
 * `pink-bluegrey.css`
 * `purple-green.css`
+
+
+
+## Versioning
+
+Library tested for Angular / CDK / Material versions **>= 9.x.x**.
+
+Use Angular Multiple Dates `1.x.x` for Angular Components `<= 11.x.x`
+
+Later versions are consistant with major Angular Components version. E.g.:
+
+Use `v13.x.x` with Angular Components `13.x.x`.
+
+Use `v12.x.x` with Angular Components `12.x.x`.
 
 
 

@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 
 @mixin ngx-multiple-dates-component-theme($theme) {
   $primary: map-get($theme, primary);
@@ -13,8 +13,8 @@
         &:hover,
         &:not(.disabled),
         &:not(.disabled):hover {
-          background-color: mat-color($primary) !important;
-          color: mat-color($primary, default-contrast) !important;
+          background-color: mat.get-color-from-palette($primary, 500) !important;
+          color: mat.get-color-from-palette($primary, default-contrast) !important;
         }
       }
     }

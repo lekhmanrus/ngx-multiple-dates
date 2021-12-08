@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 import {
   Component,
   ChangeDetectorRef,
@@ -82,11 +83,8 @@ export class MultipleDatesComponent<D = Date>
   implements AfterViewInit, OnDestroy, DoCheck, ControlValueAccessor, MatFormFieldControl<D[]>,
     HasTabIndex, CanDisable, CanUpdateErrorState, Validator {
   public static nextId = 0;
-  // tslint:disable-next-line:variable-name
   public static ngAcceptInputType_required: BooleanInput;
-  // tslint:disable-next-line:variable-name
   public static ngAcceptInputType_disabled: BooleanInput;
-  // tslint:disable-next-line:variable-name
   public static ngAcceptInputType_value: any[];
   @Input()
   @HostBinding()
@@ -125,19 +123,19 @@ export class MultipleDatesComponent<D = Date>
     return !this._dateFilter || !value || this._dateFilter(value)
       ? null
       : { matDatepickerFilter: true };
-  }
+  };
   private _minValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const value = this._getValidDateOrNull(this._dateAdapter.deserialize(control.value));
     return (!this.min || !value || this._dateAdapter.compareDate(this.min, value) <= 0)
       ? null
       : { matDatepickerMin: { min: this.min, actual: value } };
-  }
+  };
   private _maxValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const value = this._getValidDateOrNull(this._dateAdapter.deserialize(control.value));
     return (!this.max || !value || this._dateAdapter.compareDate(this.max, value) >= 0)
       ? null
       : { matDatepickerMax: { max: this.max, actual: value } };
-  }
+  };
 
   @Input()
   public get matDatepicker(): MatDatepicker<D> {
@@ -401,7 +399,7 @@ export class MultipleDatesComponent<D = Date>
       return [ className ];
     }
     return [ ];
-  }
+  };
 
   public dateChanged(event: MatDatepickerInputEvent<D>): void {
     if (event.value) {
@@ -412,7 +410,7 @@ export class MultipleDatesComponent<D = Date>
           this.value.push(date);
           this._sort();
         } else {
-          this.value.splice(index, 1)
+          this.value.splice(index, 1);
         }
       }
       this.resetModel = new Date(0);
@@ -420,8 +418,7 @@ export class MultipleDatesComponent<D = Date>
       if (this.matDatepicker && !this.closeOnSelected) {
         const closeFn = this.matDatepicker.close;
         this.matDatepicker.close = () => { };
-        // tslint:disable-next-line:no-string-literal
-        this.matDatepicker['_popupComponentRef'].instance._calendar.monthView._createWeekCells();
+        this.matDatepicker['_componentRef'].instance._calendar.monthView._createWeekCells();
         setTimeout(() => this.matDatepicker.close = closeFn);
         this._changeDetectorRef.detectChanges();
       }

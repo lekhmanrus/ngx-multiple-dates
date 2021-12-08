@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MultipleDatesComponent } from './multiple-dates.component';
 
@@ -6,7 +6,7 @@ describe('MultipleDatesComponent', () => {
   let component: MultipleDatesComponent;
   let fixture: ComponentFixture<MultipleDatesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MultipleDatesComponent ]
     })
@@ -14,7 +14,7 @@ describe('MultipleDatesComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MultipleDatesComponent);
+    fixture = TestBed.createComponent<MultipleDatesComponent>(MultipleDatesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,7 +1,7 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 @import '../lib/theming';
 
-$primary: mat-palette($mat-deep-purple);
-$accent:  mat-palette($mat-amber);
-$theme: mat-light-theme($primary, $accent);
+$primary: mat.define-palette(mat.$deep-purple-palette);
+$accent:  mat.define-palette(mat.$amber-palette);
+$theme: mat.define-light-theme($primary, $accent);
 @include ngx-multiple-dates-theme($theme);

@@ -1,12 +1,19 @@
-import { TestBed, async } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TestBed, waitForAsync } from '@angular/core/testing';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MdePopoverModule } from '@material-extended/mde';
+import { NgxMultipleDatesModule } from 'ngx-multiple-dates';
+
 import { RootComponent } from './root.component';
 
 describe('RootComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [ MatNativeDateModule, MdePopoverModule, NgxMultipleDatesModule ],
       declarations: [
         RootComponent
       ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     }).compileComponents();
   }));
 
@@ -14,18 +21,5 @@ describe('RootComponent', () => {
     const fixture = TestBed.createComponent(RootComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'ngx-multiple-dates-app'`, () => {
-    const fixture = TestBed.createComponent(RootComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('ngx-multiple-dates-app');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(RootComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ngx-multiple-dates-app app is running!');
   });
 });
