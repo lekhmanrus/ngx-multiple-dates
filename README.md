@@ -1,7 +1,7 @@
 # Angular Multiple Dates
 
 [![Build](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/build.yml/badge.svg)](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/build.yml)
-[![Publish](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/npm-publish.yml)
+[![Publish](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/publish.yml/badge.svg)](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/publish.yml)
 [![codecov](https://codecov.io/gh/lekhmanrus/ngx-multiple-dates/branch/master/graph/badge.svg?token=N9T5Q1CXLU)](https://codecov.io/gh/lekhmanrus/ngx-multiple-dates)
 [![npm version](https://img.shields.io/npm/v/ngx-multiple-dates.svg)](https://www.npmjs.com/package/ngx-multiple-dates)
 [![npm](https://img.shields.io/npm/dm/ngx-multiple-dates.svg)](https://www.npmjs.com/package/ngx-multiple-dates)
