@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v12.0.0...v13.0.0) (2021-12-09)
+
+
+### Features
+
+* support Angular Components 13 ([41d7fe8](https://github.com/lekhmanrus/ngx-multiple-dates/commit/41d7fe8e73e3317583acce6b7f51fed089440f57))
+
 ## [12.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v1.1.0...v12.0.0) (2021-12-08)
 
 
