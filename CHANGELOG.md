@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.1.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v13.0.0...v13.1.0) (2022-01-25)
+
+
+### Features
+
+* support all date adapters ([04404fd](https://github.com/lekhmanrus/ngx-multiple-dates/commit/04404fd6a0438573ac844966f83a49a16074a58e)), closes [#2](https://github.com/lekhmanrus/ngx-multiple-dates/issues/2)
+
 ## [13.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v12.0.0...v13.0.0) (2021-12-09)
 
 
