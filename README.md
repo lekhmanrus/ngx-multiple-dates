@@ -32,7 +32,14 @@ Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#version
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';
     import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+    // Any of the supported date adapter should be imported. For more details - see
+    // https://material.angular.io/components/datepicker/overview#choosing-a-date-implementation-and-date-format-settings
     import { MatNativeDateModule } from '@angular/material/core';
+    // import { MatDateFnsModule } from '@angular/material-date-fns-adapter';
+    // import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
+    // import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
     import { MatDatepickerModule } from '@angular/material/datepicker';
     import { MatIconModule } from '@angular/material/icon';
     import { NgxMultipleDatesModule } from 'ngx-multiple-dates'; // module import
@@ -41,7 +48,7 @@ Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#version
       imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        MatNativeDateModule,
+        MatNativeDateModule, // any of the supported date adapter should be imported
         MatDatepickerModule,
         MatIconModule,
         NgxMultipleDatesModule // import to Angular
