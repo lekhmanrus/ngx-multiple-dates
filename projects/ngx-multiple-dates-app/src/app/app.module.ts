@@ -5,7 +5,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { /*MAT_DATE_LOCALE,*/ MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+// import { MatDateFnsModule } from '@angular/material-date-fns-adapter';
+// import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
+// import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -14,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MdePopoverModule } from '@material-extended/mde';
 import { NgxMultipleDatesModule } from 'ngx-multiple-dates';
+// import { enUS } from 'date-fns/locale';
 
 import { RootComponent } from './components/root/root.component';
 import { ThemePickerComponent } from './components/theme-picker/theme-picker.component';
@@ -32,6 +36,9 @@ import { ThemePickerComponent } from './components/theme-picker/theme-picker.com
     ReactiveFormsModule,
 
     MatNativeDateModule,
+    // MatDateFnsModule,
+    // MatLuxonDateModule,
+    // MatMomentDateModule,
     MatRippleModule,
     MatButtonModule,
     MatCardModule,
@@ -42,7 +49,9 @@ import { ThemePickerComponent } from './components/theme-picker/theme-picker.com
     MdePopoverModule,
     NgxMultipleDatesModule
   ],
-  providers: [ ],
+  providers: [
+    // { provide: MAT_DATE_LOCALE, useValue: enUS }
+  ],
   bootstrap: [ RootComponent ]
 })
 export class AppModule {

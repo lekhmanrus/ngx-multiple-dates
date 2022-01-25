@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { MultipleDatesComponent } from './multiple-dates.component';
 
@@ -8,6 +9,7 @@ describe('MultipleDatesComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [ MatNativeDateModule ],
       declarations: [ MultipleDatesComponent ]
     })
     .compileComponents();

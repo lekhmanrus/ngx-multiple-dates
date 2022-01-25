@@ -108,7 +108,7 @@ export class MultipleDatesComponent<D = Date>
    * Model used to reset datepicker selected value, so unselect just selectad date will be
    * possible.
    */
-  public resetModel = new Date(0);
+  public resetModel: D;
   /**
    * Stream that emits whenever the state of the control changes such that the parent
    * `MatFormField` needs to run change detection.
@@ -325,13 +325,14 @@ export class MultipleDatesComponent<D = Date>
     protected $elementRef: ElementRef<HTMLElement>,
     private _changeDetectorRef: ChangeDetectorRef,
     private _focusMonitor: FocusMonitor,
-    @Optional() private _dateAdapter: DateAdapter<D>,
+    private _dateAdapter: DateAdapter<D>,
     @Optional() parentForm: NgForm,
     @Optional() parentFormGroup: FormGroupDirective,
     defaultErrorStateMatcher: ErrorStateMatcher,
     @Attribute('tabindex') tabIndex: string
   ) {
     super($elementRef, defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl);
+    this.resetModel = _dateAdapter.createDate(0, 0, 1);
     const validators = [
       this._filterValidator,
       this._minValidator,
@@ -482,7 +483,7 @@ export class MultipleDatesComponent<D = Date>
           this.value.splice(index, 1);
         }
       }
-      this.resetModel = new Date(0);
+      this.resetModel = this._dateAdapter.createDate(0, 0, 1);
       this._setStartAt();
       if (this.matDatepicker && !this.closeOnSelected) {
         const closeFn = this.matDatepicker.close;
@@ -528,7 +529,7 @@ export class MultipleDatesComponent<D = Date>
       if (this.value && this.value.length) {
         this.matDatepicker.startAt = this.value[this.value.length - 1];
       } else {
-        this.matDatepicker.startAt = new Date() as any;
+        this.matDatepicker.startAt = this._dateAdapter.today();
       }
     }
   }
@@ -575,27 +576,15 @@ export class MultipleDatesComponent<D = Date>
     if (!this.value) {
       return -1;
     }
-    return this.value.map((value) => this._toNumber(value)).indexOf(this._toNumber(date));
+    return this.value.map((value) => this._dateAdapter.compareDate(value, date)).indexOf(0);
   }
 
   private _sort(): void {
     if (this.value) {
-      this.value.sort((lhs, rhs) => this._toNumber(lhs) - this._toNumber(rhs));
+      this.value.sort((lhs, rhs) => this._dateAdapter.compareDate(lhs, rhs));
     }
   }
 
-  private _toNumber(date: D): number {
-    if (date instanceof Date) {
-      return +date;
-    } else {
-      const momentLike = date as any;
-      if (momentLike.toDate && momentLike.toDate instanceof Function) {
-        return +momentLike.toDate();
-      } else {
-        throw new TypeError('Unknown type. It can be either Date or Moment.');
-      }
-    }
-  }
   private _getValidDateOrNull(obj: any): D | null {
     return (this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj)) ? obj : null;
   }
