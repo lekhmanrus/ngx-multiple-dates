@@ -1,7 +1,9 @@
+@use 'sass:map';
 @use '@angular/material' as mat;
 
-@mixin ngx-multiple-dates-component-theme($theme) {
-  $primary: map-get($theme, primary);
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
 
   .mat-calendar-body-cell.selected {
     &,

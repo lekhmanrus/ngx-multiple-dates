@@ -27,7 +27,7 @@ import {
   Validators
 } from '@angular/forms';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { BooleanInput, coerceArray, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceArray, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   DateAdapter,
   ThemePalette,
@@ -51,6 +51,12 @@ import { takeUntil } from 'rxjs/operators';
 import { DateClass } from '../../models/date-class.model';
 
 abstract class MultipleDatesBaseMixinBase {
+  /**
+   * Stream that emits whenever the state of the control changes such that the parent
+   * `MatFormField` needs to run change detection.
+   */
+  public readonly stateChanges = new Subject<void>();
+
   constructor(
     protected $elementRef: ElementRef<HTMLElement>,
     public _defaultErrorStateMatcher: ErrorStateMatcher,
@@ -81,9 +87,6 @@ export class MultipleDatesComponent<D = Date>
   implements AfterViewInit, OnDestroy, DoCheck, ControlValueAccessor, MatFormFieldControl<D[]>,
     HasTabIndex, CanDisable, CanUpdateErrorState, Validator {
   public static nextId = 0;
-  public static ngAcceptInputType_required: BooleanInput;
-  public static ngAcceptInputType_disabled: BooleanInput;
-  public static ngAcceptInputType_value: any[];
   /** Unique id of the element. */
   @Input()
   @HostBinding()
@@ -109,11 +112,6 @@ export class MultipleDatesComponent<D = Date>
    * possible.
    */
   public resetModel: D;
-  /**
-   * Stream that emits whenever the state of the control changes such that the parent
-   * `MatFormField` needs to run change detection.
-   */
-  public readonly stateChanges = new Subject<void>();
   private readonly _destroy = new Subject<void>();
   /** The datepicker that this `ngx-multiple-dates` element is associated with. */
   private _matDatepicker: MatDatepicker<D>;

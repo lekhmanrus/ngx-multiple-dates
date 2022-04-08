@@ -29,8 +29,8 @@
     ],
     "paths": {
       "ngx-multiple-dates": [
-        "dist/ngx-multiple-dates/ngx-multiple-dates",
-        "dist/ngx-multiple-dates"
+        "dist/ngx-multiple-dates",
+        "dist/ngx-multiple-dates/ngx-multiple-dates"
       ]
     }
   },

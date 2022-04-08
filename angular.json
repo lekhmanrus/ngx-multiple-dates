@@ -202,7 +202,6 @@
       }
     }
   },
-  "defaultProject": "ngx-multiple-dates",
   "cli": {
     "analytics": false
   }

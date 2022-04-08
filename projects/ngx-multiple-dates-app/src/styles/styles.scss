@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@import 'ngx-multiple-dates/theming';
+@use 'ngx-multiple-dates' as ngxMultipleDates;
 
 html,
 body {
@@ -15,7 +15,7 @@ body {
   $accent:  mat.define-palette(mat.$pink-palette);
   $theme: mat.define-light-theme($primary, $accent);
   @include mat.all-component-themes($theme);
-  @include ngx-multiple-dates-theme($theme);
+  @include ngxMultipleDates.multiple-dates-theme($theme);
 }
 
 .deeppurple-amber-theme {
@@ -23,7 +23,7 @@ body {
   $accent:  mat.define-palette(mat.$amber-palette);
   $theme: mat.define-light-theme($primary, $accent);
   @include mat.all-component-themes($theme);
-  @include ngx-multiple-dates-theme($theme);
+  @include ngxMultipleDates.multiple-dates-theme($theme);
 }
 
 .purple-green-theme {
@@ -31,7 +31,7 @@ body {
   $accent:  mat.define-palette(mat.$green-palette);
   $theme: mat.define-light-theme($primary, $accent);
   @include mat.all-component-themes($theme);
-  @include ngx-multiple-dates-theme($theme);
+  @include ngxMultipleDates.multiple-dates-theme($theme);
 }
 
 .fill {

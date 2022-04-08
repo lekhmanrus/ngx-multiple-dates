@@ -43,22 +43,6 @@
         "plugin:import/errors"
       ],
       "rules": {
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "dossier",
-            "style": "kebab-case"
-          }
-        ],
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "dossier",
-            "style": "camelCase"
-          }
-        ],
         "@angular-eslint/component-class-suffix": [
           "error",
           {
