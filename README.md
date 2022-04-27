@@ -188,7 +188,8 @@ Exported as: `ngxMultipleDates`
 | `@Input()`<br />`min: D \| null` | The minimum valid date.                                             |
 | `@Input()`<br />`classes: Array<DateClass<D>>` | Custom date classes.                                                |
 | `@Input()`<br />`id: string` | Unique id of the element.                                              |
-| `@Input()`<br />`errorStateMatcher`: ErrorStateMatcher | An object used to control when error messages are shown. |
+| `@Input()`<br />`errorStateMatcher: ErrorStateMatcher` | An object used to control when error messages are shown. |
+| `@Input()`<br />`format: string` | The date/time components to include, using predefined options or a custom format string.<br />See [DatePipe Usage notes](https://angular.io/api/common/DatePipe#usage-notes) for more information. |
 | **Output**          |                                                                          |
 | `@Output()`<br />`dateChange: EventEmitter<MatDatepickerInputEvent<D>>` | Emits when a change event is fired on this `ngx-multiple-dates` element. |
 | **Properties**      |                                                                          |
