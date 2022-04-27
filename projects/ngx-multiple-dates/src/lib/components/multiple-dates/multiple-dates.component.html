@@ -2,7 +2,7 @@
                (click)="focus()">
   <mat-chip *ngFor="let item of value; trackBy: trackByValue;" removable (removed)="remove(item)"
             [color]="color" [selected]="color" [ngClass]='getClassName(item)'>
-    {{ item | date }}
+    {{ item | date : format }}
     <mat-icon matChipRemove>cancel</mat-icon>
   </mat-chip>
   <input matInput hidden [value]="resetModel"

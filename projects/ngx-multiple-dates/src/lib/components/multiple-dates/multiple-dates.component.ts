@@ -101,6 +101,12 @@ export class MultipleDatesComponent<D = Date>
   @Input()
   @HostBinding('attr.tabindex')
   public tabIndex: number;
+  /**
+   * The date/time components to include, using predefined options or a custom format string.
+   * @see {@link https://angular.io/api/common/DatePipe#usage-notes DatePipe Usage notes} for more
+   * information.
+   */
+  @Input() public readonly format?: string;
   /** Emits when a change event is fired on this `ngx-multiple-dates` element. */
   @Output() public readonly dateChange = new EventEmitter<MatDatepickerInputEvent<D>>();
   /** Whether `ngx-multiple-dates` element has focus. */

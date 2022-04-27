@@ -270,6 +270,22 @@
         <pre>{{ reactiveControl.value | json }}</pre>
       </mat-card-content>
     </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Formatting</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <ngx-multiple-dates [matDatepicker]="pickerFormat" placeholder="Format" format="shortDate"
+                              name="modelFormat" [(ngModel)]="modelFormat">
+          </ngx-multiple-dates>
+          <mat-datepicker-toggle matPrefix [for]="pickerFormat"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFormat></mat-datepicker>
+        </mat-form-field>
+        <pre>{{ modelFormat | json }}</pre>
+      </mat-card-content>
+    </mat-card>
   </form>
 
   <form [formGroup]="reactiveForm">
