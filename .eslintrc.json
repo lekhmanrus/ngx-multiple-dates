@@ -176,7 +176,8 @@
         "prefer-template": "error",
         "rxjs/no-internal": "error",
         "unicorn/filename-case": "error",
-        "import/no-deprecated": "off"
+        "import/no-deprecated": "off",
+        "import/no-unresolved": "warn"
       }
     },
     {
