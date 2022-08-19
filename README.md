@@ -167,12 +167,12 @@ Use `v12.x.x` with Angular Components `12.x.x`.
 ### Calendar (inline)
 
 ```html
-  <mat-form-field class="full-width">
-    <ngx-multiple-dates [matDatepicker]="picker" placeholder="Excluded Dates"
-                        name="excludedDates" [(ngModel)]="excludedDates">
-    </ngx-multiple-dates>
-  </mat-form-field>
-  <mat-calendar #picker></mat-calendar>
+<mat-form-field class="full-width">
+  <ngx-multiple-dates [matDatepicker]="picker" placeholder="Excluded Dates"
+                      name="excludedDates" [(ngModel)]="excludedDates">
+  </ngx-multiple-dates>
+</mat-form-field>
+<mat-calendar #picker></mat-calendar>
 ```
 
 ### More
@@ -196,7 +196,7 @@ Exported as: `ngxMultipleDates`
 |---------------------|--------------------------------------------------------------------------|
 | **Input**           |                                                                          |
 | `@Input()`<br />`value: D \| null` | The value of the `ngx-multiple-dates` control.             |
-| `@Input()`<br />`matDatepicker: MatDatepicker<D> | MatCalendar<D>` | The datepicker (or calendar - for inline view) that this `ngx-multiple-dates` element is associated with. |
+| `@Input()`<br />`matDatepicker: MatDatepicker<D> \| MatCalendar<D>` | The datepicker (or calendar - for inline view) that this `ngx-multiple-dates` element is associated with. |
 | `@Input()`<br />`color: ThemePalette` | Theme color palette for the component.                        |
 | `@Input()`<br />`placeholder: string` | Placeholder to be shown if no value has been selected.        |
 | `@Input()`<br />`required: boolean` | Whether the component is required.                              |
