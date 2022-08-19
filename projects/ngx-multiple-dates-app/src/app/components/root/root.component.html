@@ -286,6 +286,21 @@
         <pre>{{ modelFormat | json }}</pre>
       </mat-card-content>
     </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Calendar</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <ngx-multiple-dates [matDatepicker]="pickerCalendar" placeholder="Calendar"
+                              name="modelCalendar" [(ngModel)]="modelCalendar">
+          </ngx-multiple-dates>
+        </mat-form-field>
+        <mat-calendar #pickerCalendar></mat-calendar>
+        <pre>{{ modelCalendar | json }}</pre>
+      </mat-card-content>
+    </mat-card>
   </form>
 
   <form [formGroup]="reactiveForm">

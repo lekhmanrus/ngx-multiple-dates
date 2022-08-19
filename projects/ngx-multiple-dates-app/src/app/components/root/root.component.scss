@@ -10,6 +10,10 @@
   mat-card {
     margin-bottom: 15px;
 
+    mat-calendar {
+      width: 325px;
+    }
+
     pre {
       max-height: 161px;
       overflow-y: auto;

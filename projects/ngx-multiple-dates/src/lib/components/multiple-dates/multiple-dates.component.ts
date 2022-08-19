@@ -40,6 +40,7 @@ import {
   mixinErrorState
 } from '@angular/material/core';
 import {
+  MatCalendar,
   MatDatepicker,
   MatDatepickerInputEvent,
   MatCalendarCellClassFunction
@@ -119,8 +120,11 @@ export class MultipleDatesComponent<D = Date>
    */
   public resetModel: D;
   private readonly _destroy = new Subject<void>();
-  /** The datepicker that this `ngx-multiple-dates` element is associated with. */
-  private _matDatepicker: MatDatepicker<D>;
+  /**
+   * The datepicker (or calendar - for inline view) that this `ngx-multiple-dates` element is
+   * associated with.
+   */
+  private _matDatepicker: MatDatepicker<D> | MatCalendar<D>;
   /** Whether datepicker should be closed on date selected, or opened to select more dates. */
   private _closeOnSelected = false;
   /** Placeholder to be shown if no value has been selected. */
@@ -164,23 +168,32 @@ export class MultipleDatesComponent<D = Date>
       : { matDatepickerMax: { max: this.max, actual: value } };
   };
 
-  /** The datepicker that this `ngx-multiple-dates` element is associated with. */
+  /**
+   * The datepicker (or calendar - for inline view) that this `ngx-multiple-dates` element is
+   * associated with.
+   */
   @Input()
-  public get matDatepicker(): MatDatepicker<D> {
+  public get matDatepicker(): MatDatepicker<D> | MatCalendar<D> {
     return this._matDatepicker;
   }
-  public set matDatepicker(value: MatDatepicker<D>) {
-    if (!value || !(value instanceof MatDatepicker)) {
+  public set matDatepicker(value: MatDatepicker<D> | MatCalendar<D>) {
+    if (!value || (!(value instanceof MatDatepicker) && !(value instanceof MatCalendar))) {
       throw new TypeError(
-        `"matDatepicker" attribute of "ngx-multiple-dates" is required and should be an instance of
-        Angular Material Datepicker component.`
+        `Either "matDatepicker" or "matCalendar" attribute of "ngx-multiple-dates" is required and
+        should be an instance of Angular Material Datepicker component.`
       );
     }
     this._matDatepicker = value;
 
-    this.matDatepicker.closedStream
-      .pipe(takeUntil(this._destroy))
-      .subscribe(() => this.blur());
+    if (this.matDatepicker instanceof MatDatepicker) {
+      this.matDatepicker.closedStream
+        .pipe(takeUntil(this._destroy))
+        .subscribe(() => this.blur());
+    }  else {
+      this.matDatepicker.selectedChange
+        .pipe(takeUntil(this._destroy))
+        .subscribe((event) => this.dateChanged({ value: event } as MatDatepickerInputEvent<D>));
+    }
     if (!this.matDatepicker.startAt) {
       this._setStartAt();
     }
@@ -223,9 +236,6 @@ export class MultipleDatesComponent<D = Date>
   @Input()
   @HostBinding('attr.disabled')
   public get disabled(): boolean {
-    // if (this.ngControl && this.ngControl.disabled !== null) {
-    //   return this.ngControl.disabled;
-    // }
     return this._disabled;
   }
   public set disabled(value: boolean) {
@@ -310,6 +320,11 @@ export class MultipleDatesComponent<D = Date>
     return !this.value || !this.value.length;
   }
 
+  /** Whether the settled picker is a datepicker. */
+  public get isDatepicker(): boolean {
+    return this.matDatepicker instanceof MatDatepicker;
+  }
+
   /**
    * Creates an instance of MultipleDatesComponent.
    * @param ngControl Form control to manage component.
@@ -383,10 +398,9 @@ export class MultipleDatesComponent<D = Date>
   public focus(): void {
     if (!this.disabled) {
       this.focused = true;
-      if (this.matDatepicker) {
+      if (this.matDatepicker && this.matDatepicker instanceof MatDatepicker) {
         this.matDatepicker.open();
       }
-      // this._changeDetectorRef.markForCheck();
       this.stateChanges.next();
     }
   }
@@ -397,9 +411,6 @@ export class MultipleDatesComponent<D = Date>
     this.focused = false;
     if (!this.disabled) {
       this._onTouched();
-      // if (this.matDatepicker && this.matDatepicker.opened) {
-      //   this.matDatepicker.close();
-      // }
       this._changeDetectorRef.markForCheck();
       this.stateChanges.next();
     }
@@ -489,12 +500,15 @@ export class MultipleDatesComponent<D = Date>
       }
       this.resetModel = this._dateAdapter.createDate(0, 0, 1);
       this._setStartAt();
-      if (this.matDatepicker && !this.closeOnSelected) {
+      if (this.matDatepicker && this.matDatepicker instanceof MatDatepicker
+        && !this.closeOnSelected) {
         const closeFn = this.matDatepicker.close;
         this.matDatepicker.close = () => { };
         this.matDatepicker['_componentRef'].instance._calendar.monthView._createWeekCells();
-        setTimeout(() => this.matDatepicker.close = closeFn);
+        setTimeout(() => (this.matDatepicker as MatDatepicker<D>).close = closeFn);
         this._changeDetectorRef.detectChanges();
+      } else if (this.matDatepicker instanceof MatCalendar) {
+        (this.matDatepicker.monthView as any)._createWeekCells();
       }
       this.writeValue(this.value);
     }
@@ -511,6 +525,10 @@ export class MultipleDatesComponent<D = Date>
       const index = this._find(date);
       this.value.splice(index, 1);
       this.writeValue(this.value);
+      if (this.matDatepicker instanceof MatCalendar) {
+        (this.matDatepicker.monthView as any)._createWeekCells();
+        (this.matDatepicker.monthView as any)._changeDetectorRef.detectChanges();
+      }
       this._changeDetectorRef.detectChanges();
     }
   }
@@ -539,7 +557,7 @@ export class MultipleDatesComponent<D = Date>
   }
 
   private _setDisabled(): void {
-    if (this.matDatepicker) {
+    if (this.matDatepicker && this.matDatepicker instanceof MatDatepicker) {
       this.matDatepicker.disabled = this.disabled;
     }
   }

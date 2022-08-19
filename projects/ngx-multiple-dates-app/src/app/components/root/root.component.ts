@@ -28,6 +28,7 @@ export class RootComponent {
   public modelRequired: Date[];
   public modelColor: Date[];
   public modelFormat: Date[];
+  public modelCalendar: Date[];
   public modelClasses: Date[] = [ new Date('3/7/2021'), new Date('3/11/2021') ];
   public min = new Date(+(new Date()) - 30 * 24 * 60 * 60 * 1000);
   public max = new Date(+(new Date()) + 30 * 24 * 60 * 60 * 1000);

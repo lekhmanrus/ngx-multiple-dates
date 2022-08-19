@@ -5,7 +5,11 @@
     {{ item | date : format }}
     <mat-icon matChipRemove>cancel</mat-icon>
   </mat-chip>
-  <input matInput hidden [value]="resetModel"
+  <input *ngIf="isDatepicker; else simpleChipInput;" matInput hidden [value]="resetModel"
          [matDatepicker]="matDatepicker" [matDatepickerFilter]="matDatepickerFilter"
          [min]="min" [max]="max" [matChipInputFor]="chipList" (dateChange)="dateChanged($event)" />
+  <ng-template #simpleChipInput>
+    <input matInput hidden [value]="resetModel" [min]="min" [max]="max"
+           [matChipInputFor]="chipList" />
+  </ng-template>
 </mat-chip-list>
