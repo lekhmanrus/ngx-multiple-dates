@@ -152,6 +152,8 @@ Use `v12.x.x` with Angular Components `12.x.x`.
 
 ## Examples
 
+### Date Picker
+
 ```html
 <mat-form-field>
   <ngx-multiple-dates [matDatepicker]="picker" placeholder="Excluded Dates" name="excludedDates"
@@ -161,6 +163,22 @@ Use `v12.x.x` with Angular Components `12.x.x`.
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
 ```
+
+### Calendar (inline)
+
+```html
+  <mat-form-field class="full-width">
+    <ngx-multiple-dates [matDatepicker]="picker" placeholder="Excluded Dates"
+                        name="excludedDates" [(ngModel)]="excludedDates">
+    </ngx-multiple-dates>
+  </mat-form-field>
+  <mat-calendar #picker></mat-calendar>
+```
+
+### More
+
+For more examples please visit the [Demo](https://lekhmanrus.github.io/ngx-multiple-dates/) page.
+Its source code is located [here](https://github.com/lekhmanrus/ngx-multiple-dates/tree/master/projects/ngx-multiple-dates-app/src/app/components/root).
 
 
 
@@ -178,7 +196,7 @@ Exported as: `ngxMultipleDates`
 |---------------------|--------------------------------------------------------------------------|
 | **Input**           |                                                                          |
 | `@Input()`<br />`value: D \| null` | The value of the `ngx-multiple-dates` control.             |
-| `@Input()`<br />`matDatepicker: MatDatepicker<D>` | The datepicker that this `ngx-multiple-dates` element is associated with. |
+| `@Input()`<br />`matDatepicker: MatDatepicker<D> | MatCalendar<D>` | The datepicker (or calendar - for inline view) that this `ngx-multiple-dates` element is associated with. |
 | `@Input()`<br />`color: ThemePalette` | Theme color palette for the component.                        |
 | `@Input()`<br />`placeholder: string` | Placeholder to be shown if no value has been selected.        |
 | `@Input()`<br />`required: boolean` | Whether the component is required.                              |
