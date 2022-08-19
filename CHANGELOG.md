@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [14.2.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v14.1.1...v14.2.0) (2022-08-19)
+
+
+### Features
+
+* support `mat-calendar` ([b1d1402](https://github.com/lekhmanrus/ngx-multiple-dates/commit/b1d1402b0185dbc8c8dfad629b7485455c3983bd)), closes [#10](https://github.com/lekhmanrus/ngx-multiple-dates/issues/10)
+
 ### [14.1.1](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v14.1.0...v14.1.1) (2022-06-27)
 
 ## [14.1.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v14.0.0...v14.1.0) (2022-04-27)
