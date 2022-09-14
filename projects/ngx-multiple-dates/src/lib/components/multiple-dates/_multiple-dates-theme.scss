@@ -1,7 +1,8 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
-@mixin theme($theme) {
+@mixin theme($theme-or-color-config) {
+  $theme: mat.private-legacy-get-theme($theme-or-color-config);
   $color-config: mat.get-color-config($theme);
   $primary: map.get($color-config, 'primary');
 

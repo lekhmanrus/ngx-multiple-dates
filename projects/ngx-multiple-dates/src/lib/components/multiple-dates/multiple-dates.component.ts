@@ -115,7 +115,7 @@ export class MultipleDatesComponent<D = Date>
   /** A name for this control that can be used by mat-form-field. */
   public controlType? = 'ngx-multiple-dates';
   /**
-   * Model used to reset datepicker selected value, so unselect just selectad date will be
+   * Model used to reset datepicker selected value, so unselect just selected date will be
    * possible.
    */
   public resetModel: D;

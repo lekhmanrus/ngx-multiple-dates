@@ -3,5 +3,10 @@
 
 $primary: mat.define-palette(mat.$purple-palette);
 $accent:  mat.define-palette(mat.$green-palette);
-$theme: mat.define-light-theme($primary, $accent);
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent
+  )
+));
 @include theming.ngx-multiple-dates-theme($theme);

@@ -211,7 +211,7 @@ Exported as: `ngxMultipleDates`
 | **Output**          |                                                                          |
 | `@Output()`<br />`dateChange: EventEmitter<MatDatepickerInputEvent<D>>` | Emits when a change event is fired on this `ngx-multiple-dates` element. |
 | **Properties**      |                                                                          |
-| `resetModel: Date`  | Model used to reset datepicker selected value, so unselect just selectad date will be possible. |
+| `resetModel: Date`  | Model used to reset datepicker selected value, so unselect just selected date will be possible. |
 | `closeOnSelected: boolean` | Whether datepicker should be closed on date selected, or opened to select more dates. |
 | `empty: boolean`    | Whether the select has a value.                                          |
 | `shouldLabelFloat: boolean` | Whether the `MatFormField` label should try to float.                   |

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, HostBinding } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { DateClass } from 'ngx-multiple-dates';
 // import { DateTime } from 'luxon';
@@ -37,10 +37,10 @@ export class RootComponent {
     { value: new Date('3/7/2021'), className: 'my-green' },
     { value: new Date('3/9/2021'), className: 'my-blue' }
   ];
-  public reactiveControl = new FormControl();
+  public reactiveControl = new UntypedFormControl();
   public dynamicName = 'reactiveFormControl';
-  public reactiveForm = new FormGroup({
-    [this.dynamicName]: new FormControl(this.modelPredefined)
+  public reactiveForm = new UntypedFormGroup({
+    [this.dynamicName]: new UntypedFormControl(this.modelPredefined)
   });
   private _themeClass: string = DEFAULT_THEME;
 
