@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [14.3.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v14.2.0...v14.3.0) (2022-09-19)
+
+
+### Features
+
+* emit date remove event ([47f523c](https://github.com/lekhmanrus/ngx-multiple-dates/commit/47f523c8c1734ace5cf17bd01cd7e43ded17cca8)), closes [#11](https://github.com/lekhmanrus/ngx-multiple-dates/issues/11)
+* support Angular 15 ([7719c1f](https://github.com/lekhmanrus/ngx-multiple-dates/commit/7719c1f925fcf57f3eaeb7adb1deeeccc7e07ed1))
+
+
+### Bug Fixes
+
+* readme ([3681543](https://github.com/lekhmanrus/ngx-multiple-dates/commit/3681543cbeda42bbce11b54d77c329fa57176028))
+
 ## [14.2.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v14.1.1...v14.2.0) (2022-08-19)
 
 
