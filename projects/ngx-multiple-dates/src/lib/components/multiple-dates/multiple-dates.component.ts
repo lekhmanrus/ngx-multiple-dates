@@ -50,6 +50,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { DateClass } from '../../models/date-class.model';
+import { DateRemoveEvent } from '../../models/date-remove-event.model';
 
 abstract class MultipleDatesBaseMixinBase {
   /**
@@ -110,6 +111,8 @@ export class MultipleDatesComponent<D = Date>
   @Input() public format?: string;
   /** Emits when a change event is fired on this `ngx-multiple-dates` element. */
   @Output() public readonly dateChange = new EventEmitter<MatDatepickerInputEvent<D>>();
+  /** Emits on a date removal. */
+  @Output() public readonly remove = new EventEmitter<DateRemoveEvent<D>>();
   /** Whether `ngx-multiple-dates` element has focus. */
   public focused = false;
   /** A name for this control that can be used by mat-form-field. */
@@ -496,6 +499,7 @@ export class MultipleDatesComponent<D = Date>
           this._sort();
         } else {
           this.value.splice(index, 1);
+          this.remove.emit({ type: 'datepicker', date });
         }
       }
       this.resetModel = this._dateAdapter.createDate(0, 0, 1);
@@ -519,7 +523,7 @@ export class MultipleDatesComponent<D = Date>
    * Removes selected chip from the list.
    * @param date Value to remove.
    */
-  public remove(date: D): void {
+  public removeChip(date: D): void {
     if (this.value && this.value.length) {
       this._onTouched();
       const index = this._find(date);
@@ -529,6 +533,7 @@ export class MultipleDatesComponent<D = Date>
         (this.matDatepicker.monthView as any)._createWeekCells();
         (this.matDatepicker.monthView as any)._changeDetectorRef.detectChanges();
       }
+      this.remove.emit({ type: 'chip', date });
       this._changeDetectorRef.detectChanges();
     }
   }

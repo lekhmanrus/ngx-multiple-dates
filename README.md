@@ -210,6 +210,7 @@ Exported as: `ngxMultipleDates`
 | `@Input()`<br />`format: string` | The date/time components to include, using predefined options or a custom format string.<br />See [DatePipe Usage notes](https://angular.io/api/common/DatePipe#usage-notes) for more information. |
 | **Output**          |                                                                          |
 | `@Output()`<br />`dateChange: EventEmitter<MatDatepickerInputEvent<D>>` | Emits when a change event is fired on this `ngx-multiple-dates` element. |
+| `@Output()`<br />`remove: EventEmitter<DateRemoveEvent<D>>` | Emits on a date removal.                                                 |
 | **Properties**      |                                                                          |
 | `resetModel: Date`  | Model used to reset datepicker selected value, so unselect just selected date will be possible. |
 | `closeOnSelected: boolean` | Whether datepicker should be closed on date selected, or opened to select more dates. |

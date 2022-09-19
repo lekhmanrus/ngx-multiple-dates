@@ -1,6 +1,6 @@
 <mat-chip-list #chipList aria-label="placeholder" [selectable]="false"
                (click)="focus()">
-  <mat-chip *ngFor="let item of value; trackBy: trackByValue;" removable (removed)="remove(item)"
+  <mat-chip *ngFor="let item of value; trackBy: trackByValue;" removable (removed)="removeChip(item)"
             [color]="color" [ngClass]='getClassName(item)'>
     {{ item | date : format }}
     <mat-icon matChipRemove>cancel</mat-icon>

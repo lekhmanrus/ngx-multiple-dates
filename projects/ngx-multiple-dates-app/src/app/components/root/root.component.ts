@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, HostBinding } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { DateClass } from 'ngx-multiple-dates';
+import { DateClass, DateRemoveEvent } from 'ngx-multiple-dates';
 // import { DateTime } from 'luxon';
 // import * as moment from 'moment';
 
@@ -60,5 +60,9 @@ export class RootComponent {
     this._overlayContainer.getContainerElement().classList.add(this.themeClass);
     this.reactiveControl.valueChanges.subscribe((values) => console.log('reactiveControl', values));
     this.reactiveForm.valueChanges.subscribe((values) => console.log('reactiveForm', values));
+  }
+
+  public dateRemoved(date: DateRemoveEvent<Date>): void {
+    console.log('removed', date);
   }
 }

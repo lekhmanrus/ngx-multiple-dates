@@ -22,7 +22,7 @@
       <mat-card-content>
         <mat-form-field class="full-width">
           <ngx-multiple-dates [matDatepicker]="pickerSimple" placeholder="Simple"
-                              #forValuesOutput="ngxMultipleDates">
+                              #forValuesOutput="ngxMultipleDates" (remove)="dateRemoved($event)">
           </ngx-multiple-dates>
           <mat-datepicker #pickerSimple></mat-datepicker>
         </mat-form-field>
