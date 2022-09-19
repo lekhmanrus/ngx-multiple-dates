@@ -167,12 +167,12 @@ Use `v12.x.x` with Angular Components `12.x.x`.
 ### Calendar (inline)
 
 ```html
-  <mat-form-field class="full-width">
-    <ngx-multiple-dates [matDatepicker]="picker" placeholder="Excluded Dates"
-                        name="excludedDates" [(ngModel)]="excludedDates">
-    </ngx-multiple-dates>
-  </mat-form-field>
-  <mat-calendar #picker></mat-calendar>
+<mat-form-field class="full-width">
+  <ngx-multiple-dates [matDatepicker]="picker" placeholder="Excluded Dates"
+                      name="excludedDates" [(ngModel)]="excludedDates">
+  </ngx-multiple-dates>
+</mat-form-field>
+<mat-calendar #picker></mat-calendar>
 ```
 
 ### More
@@ -196,7 +196,7 @@ Exported as: `ngxMultipleDates`
 |---------------------|--------------------------------------------------------------------------|
 | **Input**           |                                                                          |
 | `@Input()`<br />`value: D \| null` | The value of the `ngx-multiple-dates` control.             |
-| `@Input()`<br />`matDatepicker: MatDatepicker<D> | MatCalendar<D>` | The datepicker (or calendar - for inline view) that this `ngx-multiple-dates` element is associated with. |
+| `@Input()`<br />`matDatepicker: MatDatepicker<D> \| MatCalendar<D>` | The datepicker (or calendar - for inline view) that this `ngx-multiple-dates` element is associated with. |
 | `@Input()`<br />`color: ThemePalette` | Theme color palette for the component.                        |
 | `@Input()`<br />`placeholder: string` | Placeholder to be shown if no value has been selected.        |
 | `@Input()`<br />`required: boolean` | Whether the component is required.                              |
@@ -210,8 +210,9 @@ Exported as: `ngxMultipleDates`
 | `@Input()`<br />`format: string` | The date/time components to include, using predefined options or a custom format string.<br />See [DatePipe Usage notes](https://angular.io/api/common/DatePipe#usage-notes) for more information. |
 | **Output**          |                                                                          |
 | `@Output()`<br />`dateChange: EventEmitter<MatDatepickerInputEvent<D>>` | Emits when a change event is fired on this `ngx-multiple-dates` element. |
+| `@Output()`<br />`remove: EventEmitter<DateRemoveEvent<D>>` | Emits on a date removal.                                                 |
 | **Properties**      |                                                                          |
-| `resetModel: Date`  | Model used to reset datepicker selected value, so unselect just selectad date will be possible. |
+| `resetModel: Date`  | Model used to reset datepicker selected value, so unselect just selected date will be possible. |
 | `closeOnSelected: boolean` | Whether datepicker should be closed on date selected, or opened to select more dates. |
 | `empty: boolean`    | Whether the select has a value.                                          |
 | `shouldLabelFloat: boolean` | Whether the `MatFormField` label should try to float.                   |
