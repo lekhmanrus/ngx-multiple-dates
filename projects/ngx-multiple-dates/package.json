@@ -1,19 +1,19 @@
 {
   "name": "ngx-multiple-dates",
   "description": "Angular Multiple Dates",
-  "version": "14.3.1",
+  "version": "15.0.0",
   "homepage": "https://lekhmanrus.github.io/ngx-multiple-dates/",
   "bugs": {
-    "url" : "https://github.com/lekhmanrus/ngx-multiple-dates/issues",
-    "email" : "lekhman112@gmail.com"
+    "url": "https://github.com/lekhmanrus/ngx-multiple-dates/issues",
+    "email": "lekhman112@gmail.com"
   },
   "author": "Ruslan Lekhman <lekhman112@gmail.com> (https://github.com/lekhmanrus)",
   "contributors": [
     "Ruslan Lekhman <lekhman112@gmail.com> (https://github.com/lekhmanrus)"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/lekhmanrus/ngx-multiple-dates"
+    "type": "git",
+    "url": "https://github.com/lekhmanrus/ngx-multiple-dates"
   },
   "license": "MIT",
   "readme": "https://github.com/lekhmanrus/ngx-multiple-dates/blob/master/README.md",
