@@ -99,7 +99,7 @@ Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#version
 
             // ...
             ```
-        * Starting Angular Multiple Dates **>= 14.x.x** SASS `@use` rule supported:
+        * Starting Angular Multiple Dates **= 14.x.x** SASS `@use` rule supported:
             ```scss
             @use '@angular/material' as mat;
             @use 'ngx-multiple-dates' as ngxMultipleDates; // use library theme
@@ -110,6 +110,27 @@ Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#version
             $accent:  mat.define-palette(mat.$pink-palette);
 
             $theme: mat.define-light-theme($primary, $accent); // theme
+            @include mat.all-component-themes($theme); // apply Angular Material styles
+            @include ngxMultipleDates.multiple-dates-theme($theme); // apply Angular Multiple Dates styles
+
+            // ...
+            ```
+        * Angular Multiple Dates **>= 15.x.x**:
+            ```scss
+            @use '@angular/material' as mat;
+            @use 'ngx-multiple-dates' as ngxMultipleDates; // use library theme
+
+            @include mat.core;
+            // Palette
+            $primary: mat.define-palette(mat.$indigo-palette);
+            $accent:  mat.define-palette(mat.$pink-palette);
+
+            $theme: mat.define-light-theme((
+              color: (
+                primary: $primary,
+                accent: $accent
+              )
+            )); // theme
             @include mat.all-component-themes($theme); // apply Angular Material styles
             @include ngxMultipleDates.multiple-dates-theme($theme); // apply Angular Multiple Dates styles
 

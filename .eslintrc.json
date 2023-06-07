@@ -26,6 +26,8 @@
         "createDefaultProgram": true
       },
       "plugins": [
+        "@angular-eslint",
+        "@typescript-eslint",
         "import",
         "jsdoc",
         "prefer-arrow",
@@ -33,8 +35,6 @@
         "unicorn"
       ],
       "extends": [
-        "plugin:@angular-eslint/ng-cli-compat",
-        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:import/recommended",
         "plugin:import/typescript",

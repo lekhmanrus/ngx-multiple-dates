@@ -1,15 +1,17 @@
-<mat-chip-list #chipList aria-label="placeholder" [selectable]="false"
-               (click)="focus()">
-  <mat-chip *ngFor="let item of value; trackBy: trackByValue;" removable (removed)="removeChip(item)"
+<mat-chip-grid #chipList [attr.aria-label]="placeholder" (click)="focus()">
+  <mat-chip *ngFor="let item of value; trackBy: trackByValue;"
+            removable (removed)="removeChip(item)" [highlighted]="!!color"
             [color]="color" [ngClass]='getClassName(item)'>
     {{ item | date : format }}
-    <mat-icon matChipRemove>cancel</mat-icon>
+    <mat-icon matChipRemove [attr.aria-label]="'remove ' + (item | date : format)">cancel</mat-icon>
   </mat-chip>
   <input *ngIf="isDatepicker; else simpleChipInput;" matInput hidden [value]="resetModel"
          [matDatepicker]="matDatepicker" [matDatepickerFilter]="matDatepickerFilter"
-         [min]="min" [max]="max" [matChipInputFor]="chipList" (dateChange)="dateChanged($event)" />
+         [min]="min" [max]="max" [matChipInputFor]="chipList" (dateChange)="dateChanged($event)"
+         [placeholder]="placeholder" />
   <ng-template #simpleChipInput>
     <input matInput hidden [value]="resetModel" [min]="min" [max]="max"
-           [matChipInputFor]="chipList" />
+           [matChipInputFor]="chipList" [placeholder]="placeholder" />
   </ng-template>
-</mat-chip-list>
+  <input *ngIf="!value?.length" [matChipInputFor]="chipList" [placeholder]="placeholder" />
+</mat-chip-grid>

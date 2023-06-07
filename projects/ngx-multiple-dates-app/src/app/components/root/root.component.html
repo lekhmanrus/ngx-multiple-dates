@@ -21,6 +21,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Simple</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerSimple" placeholder="Simple"
                               #forValuesOutput="ngxMultipleDates" (remove)="dateRemoved($event)">
           </ngx-multiple-dates>
@@ -36,6 +37,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Model</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerModel" placeholder="Model" name="model"
                               [(ngModel)]="model">
           </ngx-multiple-dates>
@@ -51,6 +53,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Model</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerWithToggleButton" placeholder="Model"
                               name="modelWithToggleButton" [(ngModel)]="modelWithToggleButton">
           </ngx-multiple-dates>
@@ -67,6 +70,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Predefined</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerPredefined" placeholder="Predefined"
                               name="modelPredefined"
                               [(ngModel)]="modelPredefined">
@@ -84,6 +88,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Min/Max</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerMinMax" placeholder="Min/Max"
                               name="modelMinMax" [min]="min" [max]="max"
                               [(ngModel)]="modelMinMax">
@@ -103,6 +108,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Minlength/Maxlength</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerMinlengthMaxlength" placeholder="Minlength/Maxlength"
                               name="modelMinlengthMaxlength" [minlength]="2" [maxlength]="3"
                               [(ngModel)]="modelMinlengthMaxlength">
@@ -122,6 +128,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Required</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerRequired" placeholder="Required"
                               name="modelRequired" [(ngModel)]="modelRequired" required>
           </ngx-multiple-dates>
@@ -138,6 +145,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Disabled</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerDisabled" placeholder="Disabled"
                               #disabledForValuesOutput="ngxMultipleDates" disabled>
           </ngx-multiple-dates>
@@ -154,6 +162,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Color</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerColor" placeholder="Color" color="accent"
                               name="modelColor" [(ngModel)]="modelColor">
           </ngx-multiple-dates>
@@ -170,6 +179,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Classes</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerClasses" placeholder="Classes"
                               [classes]="classes" name="modelClasses" [(ngModel)]="modelClasses">
           </ngx-multiple-dates>
@@ -233,7 +243,8 @@
   &#125;
 
   /* Chip classes. */
-  .mat-chip &#123;
+  .mat-chip,
+  .mat-mdc-chip &#123;
     &amp;.my-red &#123;
       background-color: #f44336 !important;
       color: #fff !important;
@@ -261,6 +272,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Reactive</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerReactive" placeholder="Reactive"
                               [formControl]="reactiveControl">
           </ngx-multiple-dates>
@@ -277,6 +289,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Format</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerFormat" placeholder="Format" format="shortDate"
                               name="modelFormat" [(ngModel)]="modelFormat">
           </ngx-multiple-dates>
@@ -293,6 +306,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Calendar</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerCalendar" placeholder="Calendar"
                               name="modelCalendar" [(ngModel)]="modelCalendar">
           </ngx-multiple-dates>
@@ -310,6 +324,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
+          <mat-label>Reactive</mat-label>
           <ngx-multiple-dates [matDatepicker]="pickerReactiveForm" placeholder="Reactive"
                               [formControlName]="dynamicName"
                               #reactiveFormForValuesOutput="ngxMultipleDates"

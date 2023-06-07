@@ -27,10 +27,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-multiple-dates/src/test.ts",
             "tsConfig": "projects/ngx-multiple-dates/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-multiple-dates/karma.conf.js",
-            "codeCoverage": true
+            "codeCoverage": true,
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         },
         "lint": {
@@ -64,8 +67,10 @@
             "outputPath": "dist/ngx-multiple-dates-app",
             "index": "projects/ngx-multiple-dates-app/src/index.html",
             "main": "projects/ngx-multiple-dates-app/src/main.ts",
-            "polyfills": "projects/ngx-multiple-dates-app/src/polyfills.ts",
             "tsConfig": "projects/ngx-multiple-dates-app/tsconfig.app.json",
+            "polyfills": [
+              "zone.js"
+            ],
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/ngx-multiple-dates-app/src/favicon.ico",
@@ -141,8 +146,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-multiple-dates-app/src/test.ts",
-            "polyfills": "projects/ngx-multiple-dates-app/src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "projects/ngx-multiple-dates-app/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-multiple-dates-app/karma.conf.js",
             "codeCoverage": true,
