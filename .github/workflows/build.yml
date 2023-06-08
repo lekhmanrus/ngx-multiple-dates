@@ -10,14 +10,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates
@@ -26,12 +26,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates
@@ -42,27 +42,27 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates
       - run: npm ci
       - run: npm run test:ci
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: coverage
           path: coverage/ngx-multiple-dates/cobertura-coverage.xml
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: coverage
           path: coverage/ngx-multiple-dates-app/cobertura-coverage.xml
       - name: Upload to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/ngx-multiple-dates/cobertura-coverage.xml,./coverage/ngx-multiple-dates-app/cobertura-coverage.xml
@@ -74,12 +74,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates

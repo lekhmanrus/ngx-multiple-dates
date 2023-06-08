@@ -1,18 +1,17 @@
-<mat-toolbar color="primary" #mainToolbar>
+<mat-toolbar color="primary" mtxPopoverTarget #mainToolbar="mtxPopoverTarget">
   <span>Angular Multiple Dates Demo</span>
   <div class="fill"></div>
-  <button mat-icon-button [mdePopoverTriggerFor]="themePopover" [mdePopoverTargetAt]="mainToolbar"
-          mdePopoverTriggerOn="click">
+  <button mat-icon-button [mtxPopoverTriggerFor]="themePopover" [mtxPopoverTargetAt]="mainToolbar"
+          mtxPopoverTriggerOn="click">
     <mat-icon>format_color_fill</mat-icon>
   </button>
   <a mat-icon-button href="https://github.com/lekhmanrus/ngx-multiple-dates">
     <mat-icon svgIcon="github"></mat-icon>
   </a>
 </mat-toolbar>
-<mde-popover #themePopover="mdePopover" [mdePopoverOverlapTrigger]="false"
-             [mdePopoverCloseOnClick]="false" [mdePopoverOffsetX]="-19" [mdePopoverOffsetY]="-11" [mdePopoverArrowOffsetX]="19" mdePopoverArrowColor="#ffffff">
+<mtx-popover #themePopover="mtxPopover" [position]="[ 'below', 'before' ]" [xOffset]="-19" [yOffset]="-21" [arrowOffsetX]="69">
   <app-theme-picker [(theme)]="themeClass"></app-theme-picker>
-</mde-popover>
+</mtx-popover>
 <div class="container">
   <form>
     <mat-card>

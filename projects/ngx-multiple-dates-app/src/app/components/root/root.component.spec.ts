@@ -1,7 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MdePopoverModule } from '@material-extended/mde';
+import { MtxPopoverModule } from '@ng-matero/extensions/popover';
 import { NgxMultipleDatesModule } from 'ngx-multiple-dates';
 
 import { RootComponent } from './root.component';
@@ -9,7 +9,7 @@ import { RootComponent } from './root.component';
 describe('RootComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ MatNativeDateModule, MdePopoverModule, NgxMultipleDatesModule ],
+      imports: [ MatNativeDateModule, MtxPopoverModule, NgxMultipleDatesModule ],
       declarations: [
         RootComponent
       ],

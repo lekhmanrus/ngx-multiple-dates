@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  HostBinding,
-  ChangeDetectionStrategy
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-theme-picker',
@@ -21,7 +14,6 @@ export class ThemePickerComponent {
     { className: 'purple-green-theme'     }
   ];
   @Output() public themeChange = new EventEmitter<string>();
-  @HostBinding('class') public className = 'mat-elevation-z3';
   private _theme = '';
 
   @Input()

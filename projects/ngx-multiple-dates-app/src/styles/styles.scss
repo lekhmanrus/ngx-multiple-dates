@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use '@ng-matero/extensions' as mtx;
 @use 'ngx-multiple-dates' as ngxMultipleDates;
 
 html,
@@ -32,6 +33,7 @@ $my-theme: mat.define-light-theme((
     )
   ));
   @include mat.all-component-colors($theme);
+  @include mtx.popover-theme($theme);
   @include ngxMultipleDates.multiple-dates-theme($theme);
 }
 
@@ -45,6 +47,7 @@ $my-theme: mat.define-light-theme((
     )
   ));
   @include mat.all-component-colors($theme);
+  @include mtx.popover-theme($theme);
   @include ngxMultipleDates.multiple-dates-theme($theme);
 }
 
@@ -58,6 +61,7 @@ $my-theme: mat.define-light-theme((
     )
   ));
   @include mat.all-component-colors($theme);
+  @include mtx.popover-theme($theme);
   @include ngxMultipleDates.multiple-dates-theme($theme);
 }
 

@@ -8,14 +8,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates
@@ -24,18 +24,18 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates
       - run: npm ci
       - run: npm run build:app
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: ngx-multiple-dates-app
           path: dist/ngx-multiple-dates-app
@@ -44,12 +44,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates
@@ -60,12 +60,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates
@@ -76,8 +76,8 @@ jobs:
     needs: [build, build-app, test, lint]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
         with:
           name: ngx-multiple-dates-app
           path: dist/ngx-multiple-dates-app
@@ -95,13 +95,13 @@ jobs:
     needs: [build, build-app, test, lint]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           registry-url: https://registry.npmjs.org/
           cache: 'npm'
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates

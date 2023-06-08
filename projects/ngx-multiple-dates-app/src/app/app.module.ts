@@ -15,7 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MdePopoverModule } from '@material-extended/mde';
+import { MtxPopoverModule } from '@ng-matero/extensions/popover';
 import { NgxMultipleDatesModule } from 'ngx-multiple-dates';
 // import { enUS } from 'date-fns/locale';
 
@@ -46,7 +46,7 @@ import { ThemePickerComponent } from './components/theme-picker/theme-picker.com
     MatIconModule,
     MatInputModule,
     MatToolbarModule,
-    MdePopoverModule,
+    MtxPopoverModule,
     NgxMultipleDatesModule
   ],
   providers: [
