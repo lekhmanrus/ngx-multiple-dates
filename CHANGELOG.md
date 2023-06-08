@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [15.0.1](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v15.0.0...v15.0.1) (2023-06-08)
+
+
+### Bug Fixes
+
+* update peer dependencies ([cbdb6a5](https://github.com/lekhmanrus/ngx-multiple-dates/commit/cbdb6a536016dc82cec970744e6677114a2359ed))
+
 ## [15.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v14.3.1...v15.0.0) (2023-06-07)
 
 
