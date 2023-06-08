@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [15.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v14.3.1...v15.0.0) (2023-06-07)
+
+
+### Features
+
+* support Angular Material 15 ([1426140](https://github.com/lekhmanrus/ngx-multiple-dates/commit/1426140f2232bc5704931ea499d4bc091cc2a6c7)), closes [#21](https://github.com/lekhmanrus/ngx-multiple-dates/issues/21)
+
 ### [14.3.1](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v14.3.0...v14.3.1) (2022-09-20)
 
 ## [14.3.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v14.2.0...v14.3.0) (2022-09-19)
