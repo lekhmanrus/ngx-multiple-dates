@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v15.0.1...v16.0.0) (2023-06-09)
+
+
+### Features
+
+* support Angular Components 16 ([5a56896](https://github.com/lekhmanrus/ngx-multiple-dates/commit/5a56896918558b57fe48062b4cda57acbfd3ae96))
+
 ### [15.0.1](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v15.0.0...v15.0.1) (2023-06-08)
 
 
