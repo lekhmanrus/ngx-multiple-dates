@@ -83,9 +83,9 @@ jobs:
           path: dist/ngx-multiple-dates-app
       - name: get-npm-version
         id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
+        uses: martinbeentjes/npm-get-version-action@v1
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.7
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: dist/ngx-multiple-dates-app
@@ -107,7 +107,7 @@ jobs:
           path: dist/ngx-multiple-dates
       - name: get-npm-version
         id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
+        uses: martinbeentjes/npm-get-version-action@v1
       - name: Publish to NPM
         working-directory: ./dist/ngx-multiple-dates
         run: npm publish && npm dist-tag add ngx-multiple-dates@${{ steps.package-version.outputs.current-version }} stable
