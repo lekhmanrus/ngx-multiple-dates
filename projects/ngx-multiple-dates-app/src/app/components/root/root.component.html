@@ -314,6 +314,24 @@
         <pre>{{ modelCalendar | json }}</pre>
       </mat-card-content>
     </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Datepicker with filter validation</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <mat-label>Filter Validation</mat-label>
+          <ngx-multiple-dates [matDatepicker]="pickerFilterValidation" [matDatepickerFilter]="myFilter"
+                              placeholder="Filter Validation" name="modelFilterValidation"
+                              [(ngModel)]="modelFilterValidation">
+          </ngx-multiple-dates>
+          <mat-datepicker-toggle matPrefix [for]="pickerFilterValidation"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFilterValidation></mat-datepicker>
+        </mat-form-field>
+        <pre>{{ modelFilterValidation | json }}</pre>
+      </mat-card-content>
+    </mat-card>
   </form>
 
   <form [formGroup]="reactiveForm">

@@ -30,6 +30,7 @@ export class RootComponent {
   public modelFormat: Date[];
   public modelCalendar: Date[];
   public modelClasses: Date[] = [ new Date('3/7/2021'), new Date('3/11/2021') ];
+  public modelFilterValidation: Date[];
   public min = new Date(+(new Date()) - 30 * 24 * 60 * 60 * 1000);
   public max = new Date(+(new Date()) + 30 * 24 * 60 * 60 * 1000);
   public classes: DateClass[] = [
@@ -61,6 +62,12 @@ export class RootComponent {
     this.reactiveControl.valueChanges.subscribe((values) => console.log('reactiveControl', values));
     this.reactiveForm.valueChanges.subscribe((values) => console.log('reactiveForm', values));
   }
+
+  public myFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  };
 
   public dateRemoved(date: DateRemoveEvent<Date>): void {
     console.log('removed', date);
