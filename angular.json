@@ -129,10 +129,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngx-multiple-dates-app:build:production"
+              "buildTarget": "ngx-multiple-dates-app:build:production"
             },
             "development": {
-              "browserTarget": "ngx-multiple-dates-app:build:development"
+              "buildTarget": "ngx-multiple-dates-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -140,7 +140,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-multiple-dates-app:build"
+            "buildTarget": "ngx-multiple-dates-app:build"
           }
         },
         "test": {
