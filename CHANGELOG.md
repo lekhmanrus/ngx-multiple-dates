@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v16.0.0...v17.0.0) (2023-11-21)
+
+
+### Features
+
+* add filter example ([4f894c8](https://github.com/lekhmanrus/ngx-multiple-dates/commit/4f894c8d487d12c53a34972372b292400c2df1f0))
+* support angular 17 ([cba8b81](https://github.com/lekhmanrus/ngx-multiple-dates/commit/cba8b81d72c9aab7ff6cd0736c37d5afac9a67f1))
+
 ## [16.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v15.0.1...v16.0.0) (2023-06-09)
 
 
