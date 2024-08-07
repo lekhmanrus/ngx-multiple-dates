@@ -59,12 +59,12 @@ jobs:
           path: coverage/ngx-multiple-dates/cobertura-coverage.xml
       - uses: actions/upload-artifact@v4
         with:
-          name: coverage
+          name: coverage-app
           path: coverage/ngx-multiple-dates-app/cobertura-coverage.xml
       - name: Upload to Codecov
         uses: codecov/codecov-action@v4
         with:
-          # token: ${{ secrets.CODECOV_TOKEN }}
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/ngx-multiple-dates/cobertura-coverage.xml,./coverage/ngx-multiple-dates-app/cobertura-coverage.xml
           flags: unittests
           name: codecov-umbrella
