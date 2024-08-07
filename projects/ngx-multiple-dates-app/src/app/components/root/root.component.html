@@ -9,7 +9,8 @@
     <mat-icon svgIcon="github"></mat-icon>
   </a>
 </mat-toolbar>
-<mtx-popover #themePopover="mtxPopover" [position]="[ 'below', 'before' ]" [xOffset]="-19" [yOffset]="-21" [arrowOffsetX]="69">
+<mtx-popover class="mat-app-background" #themePopover="mtxPopover"
+             [position]="[ 'below', 'before' ]" [xOffset]="-19" [yOffset]="-21" [arrowOffsetX]="69">
   <app-theme-picker [(theme)]="themeClass"></app-theme-picker>
 </mtx-popover>
 <div class="container">

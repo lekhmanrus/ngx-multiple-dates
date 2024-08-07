@@ -17,7 +17,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates
@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates
@@ -47,28 +47,30 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates
       - run: npm ci
       - run: npm run test:ci
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: coverage/ngx-multiple-dates/cobertura-coverage.xml
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: coverage/ngx-multiple-dates-app/cobertura-coverage.xml
       - name: Upload to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          # token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/ngx-multiple-dates/cobertura-coverage.xml,./coverage/ngx-multiple-dates-app/cobertura-coverage.xml
           flags: unittests
           name: codecov-umbrella
           fail_ci_if_error: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   lint:
     needs: build
@@ -79,7 +81,7 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: ngx-multiple-dates
           path: dist/ngx-multiple-dates

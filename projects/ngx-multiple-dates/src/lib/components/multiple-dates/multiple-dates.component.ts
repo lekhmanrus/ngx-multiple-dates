@@ -138,7 +138,12 @@ export class MultipleDatesComponent<D = Date>
   private _disabled = false;
   /** The value of the `ngx-multiple-dates` control. */
   private _value: D[] | null = [ ];
-  /** Theme color palette for the component. */
+  /**
+   * Theme color palette for the component. This API is supported in M2 themes only, it has no
+   * effect in M3 themes.
+   * For information on applying color variants in M3, see
+   * https://material.angular.io/guide/theming#using-component-color-variants.
+   */
   private _color: ThemePalette | null = null;
   /** Function that can be used to filter out dates within the datepicker. */
   private _dateFilter: (date: D | null) => boolean;
@@ -264,7 +269,12 @@ export class MultipleDatesComponent<D = Date>
     }
   }
 
-  /** Theme color palette for the component. */
+  /**
+   * Theme color palette for the component. This API is supported in M2 themes only, it has no
+   * effect in M3 themes.
+   * For information on applying color variants in M3, see
+   * https://material.angular.io/guide/theming#using-component-color-variants.
+   */
   @Input()
   public get color(): ThemePalette | null {
     return this._color;

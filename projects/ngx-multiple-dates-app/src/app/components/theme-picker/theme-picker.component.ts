@@ -9,9 +9,10 @@ import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from 
 export class ThemePickerComponent {
   public hovering: string | null = null;
   public items: any[] = [
-    { className: 'indigo-pink-theme'      },
-    { className: 'deeppurple-amber-theme' },
-    { className: 'purple-green-theme'     }
+    { className: 'azure-blue-theme'     },
+    { className: 'cyan-orange-theme'    },
+    { className: 'magenta-violet-theme' },
+    { className: 'rose-red-theme'       }
   ];
   @Output() public themeChange = new EventEmitter<string>();
   private _theme = '';

@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+@use '../lib/theming';
+
+$theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette
+    ),
+    density: (
+      scale: 0
+    )
+  )
+);
+
+@include theming.ngx-multiple-dates-theme($theme);

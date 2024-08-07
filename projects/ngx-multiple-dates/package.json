@@ -38,28 +38,28 @@
     "./_theming": {
       "sass": "./_theming.scss"
     },
-    "./prebuilt-themes/indigo-pink.css": {
-      "style": "./prebuilt-themes/indigo-pink.css"
+    "./prebuilt-themes/azure-blue.css": {
+      "style": "./prebuilt-themes/azure-blue.css"
     },
-    "./prebuilt-themes/deeppurple-amber.css": {
-      "style": "./prebuilt-themes/deeppurple-amber.css"
+    "./prebuilt-themes/cyan-orange.css": {
+      "style": "./prebuilt-themes/cyan-orange.css"
     },
-    "./prebuilt-themes/pink-bluegrey.css": {
-      "style": "./prebuilt-themes/pink-bluegrey.css"
+    "./prebuilt-themes/magenta-violet.css": {
+      "style": "./prebuilt-themes/magenta-violet.css"
     },
-    "./prebuilt-themes/purple-green.css": {
-      "style": "./prebuilt-themes/purple-green.css"
+    "./prebuilt-themes/rose-red.css": {
+      "style": "./prebuilt-themes/rose-red.css"
     },
     "./prebuilt-themes/*": {
       "style": "./prebuilt-themes/*.css"
     }
   },
   "peerDependencies": {
-    "@angular/cdk": "^17.0.0",
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0",
-    "@angular/forms": "^17.0.0",
-    "@angular/material": "^17.0.0",
+    "@angular/cdk": "^18.0.0",
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "@angular/forms": "^18.0.0",
+    "@angular/material": "^18.0.0",
     "rxjs": "^7.8.1"
   }
 }

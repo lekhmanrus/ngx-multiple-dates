@@ -25,6 +25,10 @@
     min-width: 80px;
     width: 80px;
 
+    & > mat-icon {
+      margin: 0;
+    }
+
     &.hover:not(:hover) {
       opacity: .5;
     }
@@ -37,19 +41,24 @@
       font-size: 16pt;
     }
 
-    &.indigo-pink-theme {
-      background: -webkit-linear-gradient(-45deg, #3f51b5 0%, #3f51b5 50%, #e91e63 51%, #e91e63 100%);
-      background-color: #3f51b5;
+    &.azure-blue-theme {
+      background: -webkit-linear-gradient(-45deg, #0074e9 0%, #0074e9 50%, #5a64ff 51%, #5a64ff 100%);
+      background-color: #0074e9;
     }
 
-    &.deeppurple-amber-theme {
-      background: -webkit-linear-gradient(-45deg, #673ab7 0%, #673ab7 50%, #ffc107 51%, #ffc107 100%);
-      background-color: #673ab7;
+    &.cyan-orange-theme {
+      background: -webkit-linear-gradient(-45deg, #008585 0%, #008585 50%, #bc5d00 51%, #bc5d00 100%);
+      background-color: #008585;
     }
 
-    &.purple-green-theme {
-      background: -webkit-linear-gradient(-45deg, #9c27b0 0%, #9c27b0 50%, #4caf50 51%, #4caf50 100%);
-      background-color: #9c27b0;
+    &.magenta-violet-theme {
+      background: -webkit-linear-gradient(-45deg, #d200d2 0%, #d200d2 50%, #944aff 51%, #944aff 100%);
+      background-color: #d200d2;
+    }
+
+    &.rose-red-theme {
+      background: -webkit-linear-gradient(-45deg, #e80074 0%, #e80074 50%, #ef0000 51%, #ef0000 100%);
+      background-color: #e80074;
     }
   }
 }

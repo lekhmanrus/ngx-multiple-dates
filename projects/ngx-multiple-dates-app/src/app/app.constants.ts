@@ -1,1 +1,1 @@
-export const DEFAULT_THEME = 'indigo-pink-theme';
+export const DEFAULT_THEME = 'azure-blue-theme';
