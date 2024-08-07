@@ -1,4 +1,22 @@
-# Angular Multiple Dates
+<h1 align="center">Angular Multiple Dates</h1>
+
+<p align="center">
+  <img src="https://lekhmanrus.github.io/ngx-multiple-dates/assets/icons/ngx-multiple-dates.svg"
+       alt="Angular Multiple Dates Logo" width="275px" height="275px" />
+  <br />
+  <em>
+    Multiple dates picker based on <a href="https://material.angular.io">Angular Material</a>.
+    <br />
+    Compatible with Angular / CDK / Material **>= 9.x.x**. See <a href="#versioning">Versioning</a>.
+  </em>
+  <br />
+</p>
+
+<p align="center">
+  <a href="https://lekhmanrus.github.io/ngx-multiple-dates/"><strong>Demo</strong></a>
+  <br />
+</p>
+
 
 [![Build](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/build.yml/badge.svg)](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/build.yml)
 [![Publish](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/publish.yml/badge.svg)](https://github.com/lekhmanrus/ngx-multiple-dates/actions/workflows/publish.yml)
@@ -6,15 +24,11 @@
 [![npm version](https://img.shields.io/npm/v/ngx-multiple-dates.svg)](https://www.npmjs.com/package/ngx-multiple-dates)
 [![npm](https://img.shields.io/npm/dm/ngx-multiple-dates.svg)](https://www.npmjs.com/package/ngx-multiple-dates)
 
-Multiple dates picker based on [Angular Material](https://material.angular.io).
-
-Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#versioning).
 
 ![Example](https://raw.githubusercontent.com/lekhmanrus/ngx-multiple-dates/master/assets/animation.gif)
 
 
-
-## [Demo](https://lekhmanrus.github.io/ngx-multiple-dates/)
+<hr />
 
 
 
@@ -63,7 +77,7 @@ Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#version
 
     * Add one of the prebuilt themes to `angular.json` or your styles file:
         ```css
-        @import 'ngx-multiple-dates/prebuilt-themes/indigo-pink.css';
+        @import 'ngx-multiple-dates/prebuilt-themes/azure-blue.css';
         ```
 
     * Or you can use custom SCSS theme
@@ -83,7 +97,7 @@ Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#version
 
             // ...
             ```
-        * Angular **>= 12.x.x**:
+        * Angular **>= 12.x.x** && **< 18.x.x**:
             ```scss
             @use '@angular/material' as mat;
             @import '~ngx-multiple-dates/theming'; // import library theme
@@ -115,7 +129,7 @@ Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#version
 
             // ...
             ```
-        * Angular Multiple Dates **>= 15.x.x**:
+        * Angular Multiple Dates **>= 15.x.x** && **< 18.x.x**:
             ```scss
             @use '@angular/material' as mat;
             @use 'ngx-multiple-dates' as ngxMultipleDates; // use library theme
@@ -136,15 +150,39 @@ Compatible with Angular / CDK / Material **>= 9.x.x**. See [Versioning](#version
 
             // ...
             ```
+        * Angular Multiple Dates **>= 18.x.x**:
+            ```scss
+            @use '@angular/material' as mat;
+            @use 'ngx-multiple-dates' as ngxMultipleDates; // use library theme
+
+            @include mat.core;
+            // Theme
+            $my-theme: mat.define-theme(
+              (
+                color: (
+                  theme-type: light,
+                  primary: mat.$azure-palette,
+                  tertiary: mat.$blue-palette
+                ),
+                density: (
+                  scale: 0
+                )
+              )
+            );
+            @include mat.all-component-themes($theme); // apply Angular Material styles
+            @include ngxMultipleDates.multiple-dates-theme($theme); // apply Angular Multiple Dates styles
+
+            // ...
+            ```
 
 
 
 ### Available pre-built themes:
 
-* `deeppurple-amber.css`
-* `indigo-pink.css`
-* `pink-bluegrey.css`
-* `purple-green.css`
+* `azure-blue.css`
+* `cyan-orange.css`
+* `magenta-violet.css`
+* `rose-red.css`
 
 
 
@@ -218,7 +256,7 @@ Exported as: `ngxMultipleDates`
 | **Input**           |                                                                          |
 | `@Input()`<br />`value: D \| null` | The value of the `ngx-multiple-dates` control.             |
 | `@Input()`<br />`matDatepicker: MatDatepicker<D> \| MatCalendar<D>` | The datepicker (or calendar - for inline view) that this `ngx-multiple-dates` element is associated with. |
-| `@Input()`<br />`color: ThemePalette` | Theme color palette for the component.                        |
+| `@Input()`<br />`color: ThemePalette` | Theme color palette for the component. This API is supported in M2 themes only, it has no effect in M3 themes.<br />For information on applying color variants in M3, see [Using component color variants](https://material.angular.io/guide/theming#using-component-color-variants). |
 | `@Input()`<br />`placeholder: string` | Placeholder to be shown if no value has been selected.        |
 | `@Input()`<br />`required: boolean` | Whether the component is required.                              |
 | `@Input()`<br />`disabled: boolean` | Whether the component is disabled.                              |

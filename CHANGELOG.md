@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v17.0.1...v18.0.0) (2024-08-07)
+
+
+### Features
+
+* support angular 18 ([323e013](https://github.com/lekhmanrus/ngx-multiple-dates/commit/323e013b4d0e364d19dad9af77057a63485d1f46)), closes [#35](https://github.com/lekhmanrus/ngx-multiple-dates/issues/35)
+
 ### [17.0.1](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v17.0.0...v17.0.1) (2023-11-21)
 
 
