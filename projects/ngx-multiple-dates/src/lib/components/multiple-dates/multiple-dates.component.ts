@@ -625,4 +625,8 @@ export class MultipleDatesComponent<D = Date>
   private _getValidDateOrNull(obj: any): D | null {
     return (this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj)) ? obj : null;
   }
+
+  getDateFormat(date: any) {
+    return this._dateAdapter.format(date, this.format || undefined)
+  }
 }

@@ -2,8 +2,8 @@
   <mat-chip *ngFor="let item of value; trackBy: trackByValue;"
             removable (removed)="removeChip(item)" [highlighted]="!!color"
             [color]="color" [ngClass]='getClassName(item)'>
-    {{ item | date : format }}
-    <mat-icon matChipRemove [attr.aria-label]="'remove ' + (item | date : format)">cancel</mat-icon>
+    {{ getDateFormat(item) }}
+    <mat-icon matChipRemove [attr.aria-label]="'remove ' + getDateFormat(item)">cancel</mat-icon>
   </mat-chip>
   <input *ngIf="isDatepicker; else simpleChipInput;" matInput hidden [value]="resetModel"
          [matDatepicker]="matDatepicker" [matDatepickerFilter]="matDatepickerFilter"
