@@ -387,7 +387,7 @@ export class MultipleDatesComponent<D = Date>
 
   public ngAfterViewInit(): void {
     if (this.ngControl && this.ngControl.control) {
-      this.ngControl.control.setValidators(this.validate.bind(this));
+      this.ngControl.control.addValidators(this.validate.bind(this));
     }
     this._setStartAt();
     this._setDateClass();
