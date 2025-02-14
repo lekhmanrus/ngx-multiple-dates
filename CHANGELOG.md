@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.1.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v18.0.0...v18.1.0) (2025-02-14)
+
+
+### Bug Fixes
+
+* use addValidators instead of setValidators ([#46](https://github.com/lekhmanrus/ngx-multiple-dates/issues/46)) ([78202e1](https://github.com/lekhmanrus/ngx-multiple-dates/commit/78202e15a79dd0ce1fd7b6c80526f8900da4ac44)), closes [#45](https://github.com/lekhmanrus/ngx-multiple-dates/issues/45)
+* use Date Adapter to display formatted date ([#44](https://github.com/lekhmanrus/ngx-multiple-dates/issues/44)) ([b410441](https://github.com/lekhmanrus/ngx-multiple-dates/commit/b4104413fbd5d66e29ae5870873f0c775579f29a)), closes [#43](https://github.com/lekhmanrus/ngx-multiple-dates/issues/43)
+
 ## [18.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v17.0.1...v18.0.0) (2024-08-07)
 
 
