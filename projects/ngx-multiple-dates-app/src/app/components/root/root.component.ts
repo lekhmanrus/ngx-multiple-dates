@@ -8,10 +8,11 @@ import { DateClass, DateRemoveEvent } from 'ngx-multiple-dates';
 import { DEFAULT_THEME } from '../../app.constants';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './root.component.html',
-  styleUrls: [ './root.component.scss' ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-root',
+    templateUrl: './root.component.html',
+    styleUrls: ['./root.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RootComponent {
   public model: Date[];

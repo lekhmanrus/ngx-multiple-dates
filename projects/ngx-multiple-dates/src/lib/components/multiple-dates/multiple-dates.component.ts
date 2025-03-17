@@ -76,13 +76,14 @@ const _MultipleDatesBaseMixinBase
  * @template D Date type.
  */
 @Component({
-  selector: 'ngx-multiple-dates',
-  templateUrl: './multiple-dates.component.html',
-  styleUrls: [ './multiple-dates.component.scss' ],
-  providers: [
-    { provide: MatFormFieldControl, useExisting: MultipleDatesComponent }
-  ],
-  exportAs: 'ngxMultipleDates'
+    selector: 'ngx-multiple-dates',
+    templateUrl: './multiple-dates.component.html',
+    styleUrls: ['./multiple-dates.component.scss'],
+    providers: [
+        { provide: MatFormFieldControl, useExisting: MultipleDatesComponent }
+    ],
+    exportAs: 'ngxMultipleDates',
+    standalone: false
 })
 export class MultipleDatesComponent<D = Date>
   extends _MultipleDatesBaseMixinBase

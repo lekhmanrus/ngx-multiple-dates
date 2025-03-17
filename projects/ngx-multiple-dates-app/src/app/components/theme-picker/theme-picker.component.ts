@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-theme-picker',
-  templateUrl: './theme-picker.component.html',
-  styleUrls: [ './theme-picker.component.scss' ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-theme-picker',
+    templateUrl: './theme-picker.component.html',
+    styleUrls: ['./theme-picker.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ThemePickerComponent {
   public hovering: string | null = null;
