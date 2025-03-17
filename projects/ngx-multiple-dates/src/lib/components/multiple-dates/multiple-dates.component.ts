@@ -31,13 +31,8 @@ import { coerceArray, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   DateAdapter,
   ThemePalette,
-  CanUpdateErrorState,
-  HasTabIndex,
-  CanDisable,
   ErrorStateMatcher,
-  mixinTabIndex,
-  mixinDisabled,
-  mixinErrorState
+  _ErrorStateTracker
 } from '@angular/material/core';
 import {
   MatCalendar,
@@ -52,24 +47,6 @@ import { takeUntil } from 'rxjs/operators';
 import { DateClass } from '../../models/date-class.model';
 import { DateRemoveEvent } from '../../models/date-remove-event.model';
 
-abstract class MultipleDatesBaseMixinBase {
-  /**
-   * Stream that emits whenever the state of the control changes such that the parent
-   * `MatFormField` needs to run change detection.
-   */
-  public readonly stateChanges = new Subject<void>();
-
-  constructor(
-    protected $elementRef: ElementRef<HTMLElement>,
-    public _defaultErrorStateMatcher: ErrorStateMatcher,
-    public _parentForm: NgForm,
-    public _parentFormGroup: FormGroupDirective,
-    public ngControl: NgControl
-  ) { }
-}
-
-const _MultipleDatesBaseMixinBase
-  = mixinTabIndex(mixinDisabled(mixinErrorState(MultipleDatesBaseMixinBase)));
 
 /**
  * Multiple dates component.
@@ -86,9 +63,8 @@ const _MultipleDatesBaseMixinBase
     standalone: false
 })
 export class MultipleDatesComponent<D = Date>
-  extends _MultipleDatesBaseMixinBase
   implements AfterViewInit, OnDestroy, DoCheck, ControlValueAccessor, MatFormFieldControl<D[]>,
-    HasTabIndex, CanDisable, CanUpdateErrorState, Validator {
+    Validator {
   public static nextId = 0;
   /** Unique id of the element. */
   @Input()
@@ -100,7 +76,14 @@ export class MultipleDatesComponent<D = Date>
   @HostBinding('class.mat-form-field-invalid')
   public errorState = false;
   /** An object used to control when error messages are shown. */
-  @Input() public errorStateMatcher: ErrorStateMatcher;
+  private _errorStateTracker: _ErrorStateTracker;
+  @Input()
+  get errorStateMatcher() {
+    return this._errorStateTracker.matcher;
+  }
+  set errorStateMatcher(value: ErrorStateMatcher) {
+    this._errorStateTracker.matcher = value;
+  }
   @Input()
   @HostBinding('attr.tabindex')
   public tabIndex: number;
@@ -340,6 +323,12 @@ export class MultipleDatesComponent<D = Date>
   }
 
   /**
+   * Stream that emits whenever the state of the control changes such that the parent
+   * `MatFormField` needs to run change detection.
+   */
+  public readonly stateChanges = new Subject<void>();
+
+  /**
    * Creates an instance of MultipleDatesComponent.
    * @param ngControl Form control to manage component.
    * @param $elementRef A wrapper around a native element inside of a View.
@@ -364,7 +353,6 @@ export class MultipleDatesComponent<D = Date>
     defaultErrorStateMatcher: ErrorStateMatcher,
     @Attribute('tabindex') tabIndex: string
   ) {
-    super($elementRef, defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl);
     this.resetModel = _dateAdapter.createDate(0, 0, 1);
     const validators = [
       this._filterValidator,
@@ -384,6 +372,14 @@ export class MultipleDatesComponent<D = Date>
         this.stateChanges.next();
       });
     this.tabIndex = Number(tabIndex) || 0;
+
+    this._errorStateTracker = new _ErrorStateTracker(
+      defaultErrorStateMatcher,
+      ngControl,
+      parentFormGroup,
+      parentForm,
+      this.stateChanges
+    );
   }
 
   public ngAfterViewInit(): void {
@@ -405,6 +401,10 @@ export class MultipleDatesComponent<D = Date>
     if (this.ngControl) {
       this.updateErrorState();
     }
+  }
+
+  updateErrorState() {
+    this._errorStateTracker.updateErrorState();
   }
 
   /** Focuses the `ngx-multiple-dates` element. */
