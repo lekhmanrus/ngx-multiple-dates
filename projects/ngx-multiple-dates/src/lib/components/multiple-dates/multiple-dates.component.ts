@@ -405,6 +405,7 @@ export class MultipleDatesComponent<D = Date>
 
   updateErrorState() {
     this._errorStateTracker.updateErrorState();
+    this.errorState = this._errorStateTracker.errorState;
   }
 
   /** Focuses the `ngx-multiple-dates` element. */
