@@ -27,4 +27,14 @@ describe('MultipleDatesComponent', () => {
   it('should create', async () => {
     await expect(component).toBeTruthy();
   });
+
+  it('should use custom errorStateMatcher', () => {
+    const customMatcher = { isErrorState: () => true };
+    component.errorStateMatcher = customMatcher;
+    // Simulate error state update
+    component.updateErrorState();
+    expect(component.errorStateMatcher).toBe(customMatcher);
+    // If errorState is set via matcher, it should be true
+    expect(component.errorState).toBeTrue();
+  });
 });
