@@ -14,7 +14,7 @@
     "module": "esnext",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,

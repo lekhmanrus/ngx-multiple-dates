@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import {
   Component,
   ChangeDetectorRef,
@@ -9,11 +8,10 @@ import {
   Input,
   Output,
   EventEmitter,
-  Optional,
-  Self,
   ElementRef,
-  Attribute,
-  HostListener
+  HostListener,
+  HostAttributeToken,
+  inject
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -96,6 +94,12 @@ export class MultipleDatesComponent<D = Date>
   extends _MultipleDatesBaseMixinBase
   implements AfterViewInit, OnDestroy, DoCheck, ControlValueAccessor, MatFormFieldControl<D[]>,
     Validator {
+  ngControl: NgControl;
+  protected $elementRef: ElementRef<HTMLElement>;
+  private readonly _changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly _focusMonitor = inject(FocusMonitor);
+  private readonly _dateAdapter = inject<DateAdapter<D>>(DateAdapter);
+
   public static nextId = 0;
   /** Unique id of the element. */
   @Input()
@@ -160,10 +164,14 @@ export class MultipleDatesComponent<D = Date>
   /** The maximum valid date. */
   private _max: D | null;
   /** Custom date classes. */
+  // eslint-disable-next-line @typescript-eslint/array-type
   private _classes: Array<DateClass<D>> = [ ];
   private _validator: ValidatorFn | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-empty-function
   private _onChange: (_: any) => void = () => { };
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private _onTouched: () => void =  () => { };
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private _onValidatorChange: () => void =  () => { };
   private _filterValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const value = this._getValidDateOrNull(this._dateAdapter.deserialize(control.value));
@@ -323,9 +331,11 @@ export class MultipleDatesComponent<D = Date>
 
   /** Custom date classes. */
   @Input()
+  // eslint-disable-next-line @typescript-eslint/array-type
   public get classes(): Array<DateClass<D>> {
     return this._classes;
   }
+  // eslint-disable-next-line @typescript-eslint/array-type
   public set classes(value: Array<DateClass<D>>) {
     this._classes = coerceArray(value);
   }
@@ -360,18 +370,20 @@ export class MultipleDatesComponent<D = Date>
    * displaying error messages.
    * @param tabIndex Tab index.
    */
-  constructor(
-    @Optional() @Self() public ngControl: NgControl,
-    protected $elementRef: ElementRef<HTMLElement>,
-    private _changeDetectorRef: ChangeDetectorRef,
-    private _focusMonitor: FocusMonitor,
-    private _dateAdapter: DateAdapter<D>,
-    @Optional() parentForm: NgForm,
-    @Optional() parentFormGroup: FormGroupDirective,
-    defaultErrorStateMatcher: ErrorStateMatcher,
-    @Attribute('tabindex') tabIndex: string
-  ) {
-    super($elementRef, defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl);
+  constructor() {
+    const ngControl = inject(NgControl, { optional: true, self: true });
+    const $elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+    const parentForm = inject(NgForm, { optional: true });
+    const parentFormGroup = inject(FormGroupDirective, { optional: true });
+    const defaultErrorStateMatcher = inject(ErrorStateMatcher);
+    const tabIndex = inject(new HostAttributeToken('tabindex'), { optional: true });
+
+    super($elementRef, defaultErrorStateMatcher, parentForm!, parentFormGroup!, ngControl!);
+    this.ngControl = ngControl!;
+    this.$elementRef = $elementRef;
+    const _focusMonitor = this._focusMonitor;
+    const _dateAdapter = this._dateAdapter;
+
     this.resetModel = _dateAdapter.createDate(0, 0, 1);
     const validators = [
       this._filterValidator,
@@ -386,6 +398,7 @@ export class MultipleDatesComponent<D = Date>
     }
     this._validator = Validators.compose(validators);
     _focusMonitor.monitor($elementRef.nativeElement, true)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .subscribe((origin: any) => {
         this.focused = !!origin;
         this.stateChanges.next();
@@ -415,12 +428,10 @@ export class MultipleDatesComponent<D = Date>
   }
 
   private _updateErrorState(): void {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     const oldState = this.errorState;
     const parent = this._parentFormGroup || this._parentForm;
     const matcher = this.errorStateMatcher || this._defaultErrorStateMatcher;
     const control = this.ngControl ? this.ngControl.control as AbstractControl : null;
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     const newState = matcher.isErrorState(control, parent);
 
     if (newState !== oldState) {
@@ -463,6 +474,7 @@ export class MultipleDatesComponent<D = Date>
     this.stateChanges.next();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public registerOnChange(fn: (_: any) => void): void {
     this._onChange = fn;
   }
@@ -540,11 +552,13 @@ export class MultipleDatesComponent<D = Date>
       if (this.matDatepicker && this.matDatepicker instanceof MatDatepicker
         && !this.closeOnSelected) {
         const closeFn = this.matDatepicker.close;
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         this.matDatepicker.close = () => { };
         this.matDatepicker['_componentRef'].instance._calendar.monthView._createWeekCells();
         setTimeout(() => (this.matDatepicker as MatDatepicker<D>).close = closeFn);
         this._changeDetectorRef.detectChanges();
       } else if (this.matDatepicker instanceof MatCalendar) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (this.matDatepicker.monthView as any)._createWeekCells();
       }
       this.writeValue(this.value);
@@ -563,7 +577,9 @@ export class MultipleDatesComponent<D = Date>
       this.value.splice(index, 1);
       this.writeValue(this.value);
       if (this.matDatepicker instanceof MatCalendar) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (this.matDatepicker.monthView as any)._createWeekCells();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (this.matDatepicker.monthView as any)._changeDetectorRef.detectChanges();
       }
       this.remove.emit({ type: 'chip', date });
@@ -616,7 +632,7 @@ export class MultipleDatesComponent<D = Date>
               for (const className of classList) {
                 oldClasses.push(className);
               }
-            } else if (typeof('t') === 'string') {
+            } else if (typeof oldClasses === 'string') {
               return [ oldClasses, ...classList ].join(' ');
             } else {
               for (const className of classList) {
@@ -645,11 +661,11 @@ export class MultipleDatesComponent<D = Date>
     }
   }
 
-  private _getValidDateOrNull(obj: any): D | null {
-    return (this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj)) ? obj : null;
+  private _getValidDateOrNull(obj: unknown): D | null {
+    return (this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj as D)) ? (obj as D) : null;
   }
 
-  getDateFormat(date: any) {
-    return this._dateAdapter.format(date, this.format || undefined)
+  getDateFormat(date: unknown) {
+    return this._dateAdapter.format(date as D, this.format || undefined)
   }
 }

@@ -1,17 +1,22 @@
 <mat-chip-grid #chipList [attr.aria-label]="placeholder" (click)="focus()">
-  <mat-chip *ngFor="let item of value; trackBy: trackByValue;"
-            removable (removed)="removeChip(item)" [highlighted]="!!color"
-            [color]="color" [ngClass]='getClassName(item)'>
-    {{ getDateFormat(item) }}
-    <mat-icon matChipRemove [attr.aria-label]="'remove ' + getDateFormat(item)">cancel</mat-icon>
-  </mat-chip>
-  <input *ngIf="isDatepicker; else simpleChipInput;" matInput hidden [value]="resetModel"
-         [matDatepicker]="matDatepicker" [matDatepickerFilter]="matDatepickerFilter"
-         [min]="min" [max]="max" [matChipInputFor]="chipList" (dateChange)="dateChanged($event)"
-         [placeholder]="placeholder" />
-  <ng-template #simpleChipInput>
+  @for (item of value; track trackByValue($index, item)) {
+    <mat-chip
+      removable (removed)="removeChip(item)" [highlighted]="!!color"
+      [color]="color" [ngClass]='getClassName(item)'>
+      {{ getDateFormat(item) }}
+      <mat-icon matChipRemove [attr.aria-label]="'remove ' + getDateFormat(item)">cancel</mat-icon>
+    </mat-chip>
+  }
+  @if (isDatepicker) {
+    <input matInput hidden [value]="resetModel"
+      [matDatepicker]="matDatepicker" [matDatepickerFilter]="matDatepickerFilter"
+      [min]="min" [max]="max" [matChipInputFor]="chipList" (dateChange)="dateChanged($event)"
+      [placeholder]="placeholder" />
+  } @else {
     <input matInput hidden [value]="resetModel" [min]="min" [max]="max"
-           [matChipInputFor]="chipList" [placeholder]="placeholder" />
-  </ng-template>
-  <input *ngIf="!value?.length" [matChipInputFor]="chipList" [placeholder]="placeholder" />
-</mat-chip-grid>
+      [matChipInputFor]="chipList" [placeholder]="placeholder" />
+    }
+    @if (!value?.length) {
+      <input [matChipInputFor]="chipList" [placeholder]="placeholder" />
+    }
+  </mat-chip-grid>

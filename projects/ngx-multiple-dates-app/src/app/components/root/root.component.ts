@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, HostBinding } from '@angular/core';
+import { Component, ChangeDetectionStrategy, HostBinding, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormsModule,
@@ -78,6 +78,9 @@ export class RootComponent {
   public reactiveForm = new UntypedFormGroup({
     [this.dynamicName]: new UntypedFormControl(this.modelPredefined)
   });
+  private readonly _overlayContainer = inject(OverlayContainer);
+  private readonly matIconRegistry = inject(MatIconRegistry);
+  private readonly domSanitizer = inject(DomSanitizer);
   private _themeClass: string = DEFAULT_THEME;
 
   @HostBinding('class')
@@ -92,11 +95,7 @@ export class RootComponent {
     }
   }
 
-  constructor(
-    private _overlayContainer: OverlayContainer,
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
-  ) {
+  constructor() {
     this._overlayContainer.getContainerElement().classList.add(this.themeClass);
     this.reactiveControl.valueChanges.subscribe((values) => console.log('reactiveControl', values));
     this.reactiveForm.valueChanges.subscribe((values) => console.log('reactiveForm', values));

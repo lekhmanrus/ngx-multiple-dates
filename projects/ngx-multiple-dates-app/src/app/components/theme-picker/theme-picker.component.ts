@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ThemePickerComponent {
   public hovering: string | null = null;
-  public items: any[] = [
+  public items = [
     { className: 'azure-blue-theme'     },
     { className: 'cyan-orange-theme'    },
     { className: 'magenta-violet-theme' },
