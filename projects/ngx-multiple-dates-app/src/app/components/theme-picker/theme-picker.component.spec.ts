@@ -9,7 +9,7 @@ describe('ThemePickerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThemePickerComponent ],
+      imports: [ ThemePickerComponent ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();

@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 @use '@angular/material' as mat;
 @use '@ng-matero/extensions' as mtx;
 @use 'ngx-multiple-dates' as ngxMultipleDates;
@@ -10,6 +12,9 @@ body {
 }
 
 @include mat.core;
+@include mat.elevation-classes;
+@include mat.app-background;
+
 $my-theme: mat.define-theme(
   (
     color: (

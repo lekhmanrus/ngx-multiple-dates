@@ -1,5 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -11,8 +13,15 @@ describe('MultipleDatesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ MatChipsModule, MatNativeDateModule ],
-      declarations: [ MultipleDatesComponent ],
+      imports: [
+        MatChipsModule,
+        MatNativeDateModule,
+        MultipleDatesComponent
+      ],
+      providers: [
+        provideHttpClient(),
+        provideAnimations()
+      ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();

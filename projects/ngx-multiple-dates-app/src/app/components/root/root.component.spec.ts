@@ -1,17 +1,23 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MtxPopoverModule } from '@ng-matero/extensions/popover';
-import { NgxMultipleDatesModule } from 'ngx-multiple-dates';
 
 import { RootComponent } from './root.component';
 
 describe('RootComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ MatNativeDateModule, MtxPopoverModule, NgxMultipleDatesModule ],
-      declarations: [
+      imports: [
+        MatNativeDateModule,
+        MtxPopoverModule,
         RootComponent
+      ],
+      providers: [
+        provideHttpClient(),
+        provideAnimations()
       ],
       schemas: [ NO_ERRORS_SCHEMA ]
     }).compileComponents();

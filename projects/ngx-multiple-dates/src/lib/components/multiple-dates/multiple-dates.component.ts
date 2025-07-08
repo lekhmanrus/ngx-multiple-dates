@@ -28,24 +28,23 @@ import {
 } from '@angular/forms';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceArray, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { CommonModule } from '@angular/common';
+import { MatChipsModule } from '@angular/material/chips';
 import {
-  DateAdapter,
-  ThemePalette,
-  CanUpdateErrorState,
-  HasTabIndex,
-  CanDisable,
-  ErrorStateMatcher,
-  mixinTabIndex,
-  mixinDisabled,
-  mixinErrorState
-} from '@angular/material/core';
-import {
+  MatDatepickerModule,
   MatCalendar,
   MatDatepicker,
   MatDatepickerInputEvent,
   MatCalendarCellClassFunction
 } from '@angular/material/datepicker';
-import { MatFormFieldControl } from '@angular/material/form-field';
+import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import {
+  DateAdapter,
+  ThemePalette,
+  ErrorStateMatcher
+} from '@angular/material/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -68,8 +67,8 @@ abstract class MultipleDatesBaseMixinBase {
   ) { }
 }
 
-const _MultipleDatesBaseMixinBase
-  = mixinTabIndex(mixinDisabled(mixinErrorState(MultipleDatesBaseMixinBase)));
+// Temporarily disable mixins until we find the correct API
+const _MultipleDatesBaseMixinBase = MultipleDatesBaseMixinBase;
 
 /**
  * Multiple dates component.
@@ -82,12 +81,21 @@ const _MultipleDatesBaseMixinBase
   providers: [
     { provide: MatFormFieldControl, useExisting: MultipleDatesComponent }
   ],
-  exportAs: 'ngxMultipleDates'
+  exportAs: 'ngxMultipleDates',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule
+  ]
 })
 export class MultipleDatesComponent<D = Date>
   extends _MultipleDatesBaseMixinBase
   implements AfterViewInit, OnDestroy, DoCheck, ControlValueAccessor, MatFormFieldControl<D[]>,
-    HasTabIndex, CanDisable, CanUpdateErrorState, Validator {
+    Validator {
   public static nextId = 0;
   /** Unique id of the element. */
   @Input()
@@ -402,7 +410,22 @@ export class MultipleDatesComponent<D = Date>
 
   public ngDoCheck(): void {
     if (this.ngControl) {
-      this.updateErrorState();
+      this._updateErrorState();
+    }
+  }
+
+  private _updateErrorState(): void {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const oldState = this.errorState;
+    const parent = this._parentFormGroup || this._parentForm;
+    const matcher = this.errorStateMatcher || this._defaultErrorStateMatcher;
+    const control = this.ngControl ? this.ngControl.control as AbstractControl : null;
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const newState = matcher.isErrorState(control, parent);
+
+    if (newState !== oldState) {
+      this.errorState = newState;
+      this.stateChanges.next();
     }
   }
 

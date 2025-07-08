@@ -62,11 +62,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ngx-multiple-dates-app",
+            "outputPath": {
+              "base": "dist/ngx-multiple-dates-app"
+            },
             "index": "projects/ngx-multiple-dates-app/src/index.html",
-            "main": "projects/ngx-multiple-dates-app/src/main.ts",
             "tsConfig": "projects/ngx-multiple-dates-app/tsconfig.app.json",
             "polyfills": [
               "zone.js"
@@ -84,7 +85,8 @@
             "styles": [
               "projects/ngx-multiple-dates-app/src/styles/styles.scss"
             ],
-            "scripts": [ ]
+            "scripts": [],
+            "browser": "projects/ngx-multiple-dates-app/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -110,14 +112,10 @@
               "optimization": true,
               "sourceMap": false,
               "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "extractLicenses": true
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true

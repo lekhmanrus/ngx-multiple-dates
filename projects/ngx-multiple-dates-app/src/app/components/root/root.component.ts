@@ -1,17 +1,52 @@
 import { Component, ChangeDetectionStrategy, HostBinding } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  UntypedFormGroup,
+  UntypedFormControl
+} from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { DateClass, DateRemoveEvent } from 'ngx-multiple-dates';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MtxPopoverModule } from '@ng-matero/extensions/popover';
 // import { DateTime } from 'luxon';
 // import * as moment from 'moment';
+import { DateClass, DateRemoveEvent, MultipleDatesComponent } from 'ngx-multiple-dates';
 
 import { DEFAULT_THEME } from '../../app.constants';
+import { ThemePickerComponent } from '../theme-picker/theme-picker.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
   styleUrls: [ './root.component.scss' ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatNativeDateModule,
+    MatRippleModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatToolbarModule,
+    MtxPopoverModule,
+    MultipleDatesComponent,
+    ThemePickerComponent
+  ]
 })
 export class RootComponent {
   public model: Date[];
@@ -57,10 +92,20 @@ export class RootComponent {
     }
   }
 
-  constructor(private _overlayContainer: OverlayContainer) {
+  constructor(
+    private _overlayContainer: OverlayContainer,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) {
     this._overlayContainer.getContainerElement().classList.add(this.themeClass);
     this.reactiveControl.valueChanges.subscribe((values) => console.log('reactiveControl', values));
     this.reactiveForm.valueChanges.subscribe((values) => console.log('reactiveForm', values));
+
+    // Register GitHub icon
+    this.matIconRegistry.addSvgIcon(
+      'github',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/icons/github.svg')
+    );
   }
 
   public myFilter = (d: Date | null): boolean => {

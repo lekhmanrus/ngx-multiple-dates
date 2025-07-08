@@ -5,4 +5,3 @@
 export * from './lib/components/multiple-dates/multiple-dates.component';
 export * from './lib/models/date-class.model';
 export * from './lib/models/date-remove-event.model';
-export * from './lib/ngx-multiple-dates.module';
