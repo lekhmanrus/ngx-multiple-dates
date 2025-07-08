@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v19.0.0...v20.0.0) (2025-07-08)
+
+
+### Features
+
+* support angular 20 ([64bb98b](https://github.com/lekhmanrus/ngx-multiple-dates/commit/64bb98b9f73aec76077b269cb4ab624327c35b65))
+
 ## [19.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v18.1.0...v19.0.0) (2025-07-08)
 
 
