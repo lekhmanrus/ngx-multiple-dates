@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.1.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v20.0.0...v20.1.0) (2025-07-09)
+
 ## [20.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v19.0.0...v20.0.0) (2025-07-08)
 
 
