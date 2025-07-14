@@ -42,6 +42,9 @@
                               [(ngModel)]="model">
           </ngx-multiple-dates>
           <mat-datepicker #pickerModel></mat-datepicker>
+          <button mat-button matSuffix (click)="model = [ ]">
+            Clear
+          </button>
         </mat-form-field>
         <pre>{{ model | json }}</pre>
       </mat-card-content>
