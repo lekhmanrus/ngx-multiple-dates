@@ -1,0 +1,41 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
+      }
+    },
+		"microsoft.docs.mcp": {
+			"type": "http",
+			"url": "https://learn.microsoft.com/api/mcp"
+		},
+    "mcp-mcp": {
+      "command": "uvx",
+      "args": ["mcp-mcp"]
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "${workspaceFolder}"
+      ]
+    },
+    "angular-cli": {
+      "command": "npx",
+      "args": [ "@angular-cli", "mcp" ]
+    }
+  }
+}
