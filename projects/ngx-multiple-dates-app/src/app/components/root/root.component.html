@@ -291,9 +291,13 @@
         <mat-card-title>Formatting</mat-card-title>
       </mat-card-header>
       <mat-card-content>
+        <p>
+          <strong>Note: </strong>
+          Works only with the date adapters supporting dates formatting (e.g. <a href="https://www.npmjs.com/package/@angular/material-date-fns-adapter" target="_blank">@angular/material-date-fns-adapter</a>, <a href="https://www.npmjs.com/package/@angular/material-luxon-adapter" target="_blank">@angular/material-luxon-adapter</a>, <a href="https://www.npmjs.com/package/@angular/material-moment-adapter" target="_blank">@angular/material-moment-adapter</a>).
+        </p>
         <mat-form-field class="full-width">
           <mat-label>Format</mat-label>
-          <ngx-multiple-dates [matDatepicker]="pickerFormat" placeholder="Format" format="shortDate"
+          <ngx-multiple-dates [matDatepicker]="pickerFormat" placeholder="Format" format="EEEE, dd/MM//yy"
                               name="modelFormat" [(ngModel)]="modelFormat">
           </ngx-multiple-dates>
           <mat-datepicker-toggle matPrefix [for]="pickerFormat"></mat-datepicker-toggle>

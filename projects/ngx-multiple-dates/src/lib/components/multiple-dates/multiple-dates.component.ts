@@ -41,7 +41,9 @@ import { MatInputModule } from '@angular/material/input';
 import {
   DateAdapter,
   ThemePalette,
-  ErrorStateMatcher
+  ErrorStateMatcher,
+  MatDateFormats,
+  MAT_DATE_FORMATS
 } from '@angular/material/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -99,6 +101,7 @@ export class MultipleDatesComponent<D = Date>
   private readonly _changeDetectorRef = inject(ChangeDetectorRef);
   private readonly _focusMonitor = inject(FocusMonitor);
   private readonly _dateAdapter = inject<DateAdapter<D>>(DateAdapter);
+  private readonly _dateFormats = inject<MatDateFormats>(MAT_DATE_FORMATS, { optional: true })!;
 
   public static nextId = 0;
   /** Unique id of the element. */
@@ -600,6 +603,10 @@ export class MultipleDatesComponent<D = Date>
     return undefined;
   }
 
+  public getDateFormat(date: unknown): string {
+    return this._dateAdapter.format(date as D, this.format || this._dateFormats.display.dateInput);
+  }
+
   private _setStartAt(): void {
     if (this.matDatepicker) {
       if (this.value && this.value.length) {
@@ -663,9 +670,5 @@ export class MultipleDatesComponent<D = Date>
 
   private _getValidDateOrNull(obj: unknown): D | null {
     return (this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj as D)) ? (obj as D) : null;
-  }
-
-  getDateFormat(date: unknown) {
-    return this._dateAdapter.format(date as D, this.format || undefined)
   }
 }

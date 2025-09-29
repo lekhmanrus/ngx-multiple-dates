@@ -10,12 +10,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+// import { provideDateFnsAdapter } from '@angular/material-date-fns-adapter';
+// import { enCA } from 'date-fns/locale';
+// import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
+// import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
 import { MtxPopoverModule } from '@ng-matero/extensions/popover';
 // import { DateTime } from 'luxon';
 // import * as moment from 'moment';
@@ -46,6 +50,24 @@ import { ThemePickerComponent } from '../theme-picker/theme-picker.component';
     MtxPopoverModule,
     MultipleDatesComponent,
     ThemePickerComponent
+  ],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-CA'  },
+    // { provide: MAT_DATE_LOCALE, useValue: enCA  },
+    // provideDateFnsAdapter({
+    //   parse: {
+    //     dateInput: 'P',
+    //     timeInput: 'p',
+    //   },
+    //   display: {
+    //     dateInput: 'P',
+    //     timeInput: 'p',
+    //     monthYearLabel: 'LLL uuuu',
+    //     dateA11yLabel: 'PP',
+    //     monthYearA11yLabel: 'LLLL uuuu',
+    //     timeOptionLabel: 'p',
+    //   },
+    // })
   ]
 })
 export class RootComponent {

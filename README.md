@@ -266,7 +266,7 @@ Exported as: `ngxMultipleDates`
 | `@Input()`<br />`classes: Array<DateClass<D>>` | Custom date classes.                                                |
 | `@Input()`<br />`id: string` | Unique id of the element.                                              |
 | `@Input()`<br />`errorStateMatcher: ErrorStateMatcher` | An object used to control when error messages are shown. |
-| `@Input()`<br />`format: string` | The date/time components to include, using predefined options or a custom format string.<br />See [DatePipe Usage notes](https://angular.io/api/common/DatePipe#usage-notes) for more information. |
+| `@Input()`<br />`format: string` | The date/time components to include, using predefined options or a custom format string.<br />See [DatePipe Usage notes](https://angular.io/api/common/DatePipe#usage-notes) for more information.<br /><strong>Note: </strong>Works only with the date adapters supporting dates formatting (e.g. [@angular/material-date-fns-adapter](https://www.npmjs.com/package/@angular/material-date-fns-adapter), [@angular/material-luxon-adapter](https://www.npmjs.com/package/@angular/material-luxon-adapter), [@angular/material-moment-adapter](https://www.npmjs.com/package/@angular/material-moment-adapter)). |
 | **Output**          |                                                                          |
 | `@Output()`<br />`dateChange: EventEmitter<MatDatepickerInputEvent<D>>` | Emits when a change event is fired on this `ngx-multiple-dates` element. |
 | `@Output()`<br />`remove: EventEmitter<DateRemoveEvent<D>>` | Emits on a date removal.                                                 |
