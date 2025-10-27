@@ -107,7 +107,6 @@ describe('MultipleDatesComponent', () => {
     component.value = [testDate];
     const spy = spyOn(component.dateChange, 'emit');
     component.dateChanged({ value: testDate } as any);
-    // Дата повинна бути видалена (toggle)
     expect(component.value).not.toContain(testDate);
     expect(spy).toHaveBeenCalled();
   });

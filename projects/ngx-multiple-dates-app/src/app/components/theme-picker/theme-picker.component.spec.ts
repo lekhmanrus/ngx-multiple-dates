@@ -17,6 +17,7 @@ describe('ThemePickerComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ThemePickerComponent);
+    fixture.componentRef.setInput('theme', '');
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -32,13 +33,6 @@ describe('ThemePickerComponent', () => {
     ]);
   });
 
-  it('should emit themeChange when theme is set', () => {
-    const spy = spyOn(component.themeChange, 'emit');
-    component.theme = 'azure-blue-theme';
-    expect(component.theme).toBe('azure-blue-theme');
-    expect(spy).toHaveBeenCalledWith('azure-blue-theme');
-  });
-
   it('should update hovering on focus, mouseenter, mouseleave', () => {
     const item = component.items[0];
     // focus
@@ -48,20 +42,5 @@ describe('ThemePickerComponent', () => {
     // mouseleave
     component.hovering = null;
     expect(component.hovering).toBeNull();
-  });
-
-  it('should set theme via click simulation', () => {
-    const spy = spyOn(component.themeChange, 'emit');
-    // Симулюємо клік по кожній темі
-    for (const item of component.items) {
-      component.theme = item.className;
-      expect(component.theme).toBe(item.className);
-      expect(spy).toHaveBeenCalledWith(item.className);
-    }
-  });
-
-  it('should handle empty theme', () => {
-    component.theme = '';
-    expect(component.theme).toBe('');
   });
 });

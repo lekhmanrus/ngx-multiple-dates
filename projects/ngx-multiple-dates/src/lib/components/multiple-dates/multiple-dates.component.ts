@@ -6,12 +6,11 @@ import {
   DoCheck,
   HostBinding,
   Input,
-  Output,
-  EventEmitter,
   ElementRef,
   HostListener,
   HostAttributeToken,
-  inject
+  inject,
+  output
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -82,7 +81,6 @@ const _MultipleDatesBaseMixinBase = MultipleDatesBaseMixinBase;
     { provide: MatFormFieldControl, useExisting: MultipleDatesComponent }
   ],
   exportAs: 'ngxMultipleDates',
-  standalone: true,
   imports: [
     CommonModule,
     MatChipsModule,
@@ -125,9 +123,9 @@ export class MultipleDatesComponent<D = Date>
    */
   @Input() public format?: string;
   /** Emits when a change event is fired on this `ngx-multiple-dates` element. */
-  @Output() public readonly dateChange = new EventEmitter<MatDatepickerInputEvent<D>>();
+  public readonly dateChange = output<MatDatepickerInputEvent<D>>();
   /** Emits on a date removal. */
-  @Output() public readonly remove = new EventEmitter<DateRemoveEvent<D>>();
+  public readonly remove = output<DateRemoveEvent<D>>();
   /** Whether `ngx-multiple-dates` element has focus. */
   public focused = false;
   /** A name for this control that can be used by mat-form-field. */

@@ -90,7 +90,6 @@ describe('RootComponent', () => {
     const app = fixture.componentInstance;
     const iconRegistry = (app as any).matIconRegistry;
     spyOn(iconRegistry, 'addSvgIcon').and.callThrough();
-    // Викликаємо конструктор вручну не можна, але можна перевірити, що метод існує
     expect(typeof iconRegistry.addSvgIcon).toBe('function');
   });
 });
