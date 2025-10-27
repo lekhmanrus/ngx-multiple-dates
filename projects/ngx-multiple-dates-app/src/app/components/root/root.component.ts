@@ -33,7 +33,6 @@ import { ThemePickerComponent } from '../theme-picker/theme-picker.component';
   templateUrl: './root.component.html',
   styleUrls: [ './root.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

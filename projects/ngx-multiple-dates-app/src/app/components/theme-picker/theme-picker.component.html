@@ -1,11 +1,11 @@
 <div class="theme-container">
   @for (item of items; track item) {
     <button mat-button class="item" [ngClass]="item.className"
-      [class.current]="theme === item.className" [class.hover]="hovering"
-      [attr.cdkFocusInitial]="theme === item.className || null"
-      (click)="theme = item.className" (focus)="hovering = item.className"
+      [class.current]="theme() === item.className" [class.hover]="hovering"
+      [attr.cdkFocusInitial]="theme() === item.className || null"
+      (click)="theme.set(item.className)" (focus)="hovering = item.className"
       (mouseenter)="hovering = item.className" (mouseleave)="hovering = null">
-      @if (theme === item.className) {
+      @if (theme() === item.className) {
         <mat-icon>check_circle</mat-icon>
       }
     </button>
