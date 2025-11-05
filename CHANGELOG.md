@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [19.0.1](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v19.0.0...v19.0.1) (2025-11-05)
+
+
+### Bug Fixes
+
+* peer dependencies ([b9d080c](https://github.com/lekhmanrus/ngx-multiple-dates/commit/b9d080c75c1d11e096e708e44ccb9e7a42ae0dad)), closes [#54](https://github.com/lekhmanrus/ngx-multiple-dates/issues/54)
+
 ## [19.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v18.1.0...v19.0.0) (2025-07-08)
 
 
