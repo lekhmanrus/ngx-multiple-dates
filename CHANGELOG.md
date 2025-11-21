@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [21.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v20.1.0...v21.0.0) (2025-11-21)
+
+
+### Features
+
+* add cursor rules ([96db5c1](https://github.com/lekhmanrus/ngx-multiple-dates/commit/96db5c176c90dac508dcfbbce043aca6911dd749))
+* support angular 21 ([33e4cc7](https://github.com/lekhmanrus/ngx-multiple-dates/commit/33e4cc735ff1b36b17b2bbe020e0fcc2f9eb1abd))
+
 ## [20.1.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v20.0.0...v20.1.0) (2025-07-09)
 
 ## [20.0.0](https://github.com/lekhmanrus/ngx-multiple-dates/compare/v19.0.0...v20.0.0) (2025-07-08)
