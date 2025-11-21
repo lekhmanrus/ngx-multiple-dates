@@ -4,17 +4,6 @@
 @use '@ng-matero/extensions' as mtx;
 @use 'ngx-multiple-dates' as ngxMultipleDates;
 
-html,
-body {
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-  height: 100%;
-  margin: 0;
-}
-
-@include mat.core;
-@include mat.elevation-classes;
-@include mat.app-background;
-
 $my-theme: mat.define-theme(
   (
     color: (
@@ -22,29 +11,35 @@ $my-theme: mat.define-theme(
       primary: mat.$azure-palette,
       tertiary: mat.$blue-palette
     ),
-    density: (
-      scale: 0
+    typography: (
+      plain-family: Roboto,
+      brand-family: Helvetica Neue,
     )
   )
 );
 
-// Emit theme-dependent styles for common features used across multiple components.
-:root {
-  @include mat.all-component-themes($my-theme);
-  @include mat.typography-hierarchy($my-theme);
+html {
+  color-scheme: light dark;
+  @include mat.theme($my-theme);
   @include mtx.all-component-themes($my-theme);
+  @include ngxMultipleDates.multiple-dates-theme($my-theme);
+}
+
+html,
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  height: 100%;
+  margin: 0;
 }
 
 .azure-blue-theme {
+  color-scheme: light;
   $theme: mat.define-theme(
     (
       color: (
         theme-type: light,
         primary: mat.$azure-palette,
         tertiary: mat.$blue-palette
-      ),
-      density: (
-        scale: 0
       )
     )
   );
@@ -54,15 +49,13 @@ $my-theme: mat.define-theme(
 }
 
 .cyan-orange-theme {
+  color-scheme: dark;
   $theme: mat.define-theme(
     (
       color: (
         theme-type: dark,
         primary: mat.$cyan-palette,
         tertiary: mat.$orange-palette
-      ),
-      density: (
-        scale: 0
       )
     )
   );
@@ -72,15 +65,13 @@ $my-theme: mat.define-theme(
 }
 
 .magenta-violet-theme {
+  color-scheme: dark;
   $theme: mat.define-theme(
     (
       color: (
         theme-type: dark,
         primary: mat.$magenta-palette,
         tertiary: mat.$violet-palette
-      ),
-      density: (
-        scale: 0
       )
     )
   );
@@ -90,15 +81,13 @@ $my-theme: mat.define-theme(
 }
 
 .rose-red-theme {
+  color-scheme: light;
   $theme: mat.define-theme(
     (
       color: (
         theme-type: light,
         primary: mat.$rose-palette,
         tertiary: mat.$red-palette
-      ),
-      density: (
-        scale: 0
       )
     )
   );

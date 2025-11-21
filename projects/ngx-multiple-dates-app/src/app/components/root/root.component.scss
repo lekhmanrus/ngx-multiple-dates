@@ -1,4 +1,6 @@
 :host {
+  background-color: var(--mat-app-background-color, var(--mat-app-background)) !important;
+  color: var(--mat-app-text-color, var(--mat-app-on-background)) !important;
   display: block;
 
   mat-toolbar {
